@@ -3,11 +3,11 @@ Theme Name: child-aura-solis-retreat
 Theme URI: 
 Author: 
 Author URI: 
-Description: 
+Description: Child theme for Aura Solis Retreat, based on Twenty Twenty-Five
 Requires at least: 6.9
 Tested up to: 6.9
 Requires PHP: 5.7
-Version: 
+Version: 1.0.0
 License: GNU General Public License v2 or later
 License URI: http://www.gnu.org/licenses/gpl-2.0.html
 Template: twentytwentyfive
@@ -15,3 +15,47 @@ Text Domain: child-aura-solis-retreat
 Tags: 
 */
 
+/* =========================================
+   Global Typography Reinforcement
+   (Supplements theme.json definitions)
+   ========================================= */
+
+/* --- Headings: Playfair Display --- */
+h1, h2, h3, h4, h5, h6,
+.wp-block-heading {
+	font-family: 'Playfair Display', serif;
+	font-weight: 400;
+	line-height: 1.2;
+}
+
+h1 { font-size: clamp(40px, 31.5px + 2.25vw, 64px); }     /* 40px → 64px */
+h2 { font-size: clamp(32px, 26.4px + 1.5vw, 48px); }      /* 32px → 48px */
+h3 { font-size: clamp(24px, 21.2px + 0.75vw, 32px); }     /* 24px → 32px */
+
+/* --- Body / Paragraphs: Lato --- */
+body,
+p,
+.wp-block-paragraph {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: clamp(14px, 13.3px + 0.19vw, 16px);         /* 14px → 16px */
+	line-height: 1.6;
+}
+
+/* --- Links: Lato --- */
+a,
+.wp-block-navigation a {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	font-size: clamp(16px, 15.3px + 0.19vw, 18px);         /* 16px → 18px */
+}
+
+/* --- Buttons: Lato Bold --- */
+.wp-block-button .wp-block-button__link,
+.wp-element-button,
+button,
+input[type="submit"] {
+	font-family: 'Lato', sans-serif;
+	font-weight: 700;
+	font-size: clamp(16px, 15.3px + 0.19vw, 18px);         /* 16px → 18px */
+}
