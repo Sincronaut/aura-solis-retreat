@@ -1,0 +1,83 @@
+/* Banner Block Specific Styles */
+.banner-block {
+    position: relative;
+    width: 100%;
+    min-height: 100vh;
+    /* full screen height */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    text-align: center;
+    padding: 2rem 1rem;
+    /* safe padding so text doesn't touch sides on mobile */
+}
+
+.banner-block__overlay {
+    position: absolute;
+    inset: 0;
+    /* Soft dark gradient to make the white text pop against the background image */
+    background: linear-gradient(180deg, rgba(31, 28, 23, 0.2) 0%, rgba(31, 28, 23, 0.6) 100%);
+    z-index: 1;
+}
+
+.banner-block__content {
+    position: relative;
+    z-index: 2;
+    color: #ffffff;
+    max-width: 900px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-block__title {
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+/* Format the italic part of the text with the gold styling from the mockup */
+.banner-block__title em,
+.banner-block__title i {
+    color: #FFDE8E;
+}
+
+.banner-block__description {
+    color: #EEEEEE;
+    margin-bottom: 40px;
+    max-width: 700px;
+    /* Kept narrow like the mockup */
+}
+
+/* Elegant gold button matching the design */
+.btn-gold {
+    display: inline-block;
+    background: linear-gradient(135deg, #CFB069 0%, #DEC38B 50%, #B8974B 100%);
+    background-size: 200% auto;
+    color: #ffffff;
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    border-radius: 2px;
+    /* Very sharp edges according to mockup */
+    padding: 16px 42px;
+    font-family: var(--wp--preset--font-family--lato), "Lato", sans-serif;
+    font-weight: 700;
+    font-size: clamp(16px, 15.3px + 0.19vw, 18px);
+    /* match button global clamp */
+    transition: 0.4s ease-in-out;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.btn-gold:hover {
+    background-position: right center;
+    /* subtle shimmer effect */
+    color: #ffffff;
+    text-decoration: none;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+    transform: translateY(-2px);
+}

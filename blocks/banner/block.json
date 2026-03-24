@@ -1,0 +1,36 @@
+{
+  "apiVersion": 3,
+  "name": "child/banner",
+  "title": "Aura Solis Banner",
+  "category": "design",
+  "icon": "cover-image",
+  "description": "Full-screen hero banner with centered title, description, and booking button.",
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "title": {
+      "type": "string",
+      "default": "Unplug in <em>Mindful Luxury</em>"
+    },
+    "description": {
+      "type": "string",
+      "default": "A secluded sanctuary where untouched nature meets uncompromising comfort"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "BOOK NOW"
+    },
+    "buttonLink": {
+      "type": "string",
+      "default": "#"
+    },
+    "imageUrl": {
+      "type": "string",
+      "default": ""
+    }
+  }
+}
