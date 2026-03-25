@@ -36,6 +36,16 @@ function aura_solis_enqueue_child_styles() {
         [ $parent_style ], 
         $ver
     );
+
+    // Enqueue standalone Header CSS component
+    $header_style_path = $theme_dir . '/assets/css/header.css';
+    $header_ver = file_exists( $header_style_path ) ? filemtime( $header_style_path ) : '1.0.0';
+    wp_enqueue_style(
+        'aura-solis-header-style',
+        $theme_uri . '/assets/css/header.css',
+        [],
+        $header_ver
+    );
 }
 add_action( 'wp_enqueue_scripts', 'aura_solis_enqueue_child_styles' );
 

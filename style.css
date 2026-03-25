@@ -27,6 +27,18 @@ html, body {
 	overflow-x: hidden; /* Prevents right-side horizontal scrolling and white gaps */
 }
 
+/* WordPress Editor Core Resets (Removes the default block gaps pushing the banner down) */
+main,
+.wp-site-blocks {
+	margin-top: 0 !important;
+	padding-top: 0 !important;
+}
+
+main > *:first-child,
+.wp-site-blocks > *:first-child {
+	margin-top: 0 !important;
+}
+
 :root {
 	/* Horizontal Content Spacing (Side Margins) */
 	/* 20px on Mobile → 60px on Desktop */
