@@ -1,0 +1,215 @@
+.ethos-section {
+    position: relative;
+    /* Background and Padding inherited/handled via section-global */
+}
+
+/* Distinctive Dark Grey Absolute 'Follower' Leaf/Watermark */
+.ethos-watermark {
+    position: absolute;
+    right: -10vw;
+    top: 50%;
+    transform: translateY(-50%) scaleY(-1);
+    /* Flips it upside down */
+    width: 700px;
+    max-width: 50vw;
+    opacity: 0.5;
+    /* Subtler background presence */
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* Master container sits ABOVE watermark graphic */
+.ethos-section .container-global {
+    position: relative;
+    z-index: 10;
+}
+
+/* Top: Heavy Split Structure */
+.ethos-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: calc(var(--section-px) * 1.5);
+    align-items: center;
+    margin-bottom: calc(var(--section-py) * 1.5);
+    /* Master gap down to the features */
+}
+
+/* Left: The Architectural Image Stagger */
+.ethos-media {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    align-items: stretch;
+}
+
+.ethos-media__col img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 4px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    min-height: 480px;
+}
+
+.ethos-media__col.left-img {
+    transform: translateY(40px);
+    /* Dropped down matching Figma */
+}
+
+.ethos-media__col.right-img {
+    transform: translateY(-40px);
+    /* Lifted up matching Figma */
+}
+
+/* Right: Content & Hierarchy */
+.ethos-content {
+    max-width: 550px;
+    padding-left: clamp(0px, 4vw, 40px);
+}
+
+.ethos-badge {
+    display: inline-block;
+    background-color: #0D1A25;
+    /* Hard dark blue */
+    color: #ffffff;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: clamp(16px, 2.5vw, 32px);
+}
+
+.ethos-title {
+    margin-top: 0;
+    margin-bottom: clamp(16px, 2.5vw, 32px);
+    color: #333333;
+}
+
+.ethos-desc {
+    color: #555555;
+    margin-bottom: 24px;
+}
+
+.ethos-desc:last-of-type {
+    margin-bottom: clamp(32px, 4vw, 48px);
+}
+
+/* Bottom: Trust Anchor Flex row (Centered & Single Line) */
+.ethos-features {
+    display: flex;
+    justify-content: center;
+    /* Centered horizontally */
+    align-items: flex-start;
+    gap: clamp(20px, 5vw, 80px);
+    /* Responsive gap */
+    flex-wrap: nowrap;
+    /* Prevents wrapping on desktop */
+    width: 100%;
+    max-width: var(--content-max);
+    margin: 0 auto;
+}
+
+.ethos-feature-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    flex: 0 1 auto;
+    /* Don't force growth, maintain natural size */
+    min-width: 200px;
+    /* Reduced min-width to ensure they fit in one line */
+}
+
+.ethos-feature-item__icon {
+    flex-shrink: 0;
+    width: 50px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.ethos-feature-item__icon img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* Feature Titles (Using H3 global styling base) */
+.ethos-feature-title {
+    margin: 0 0 4px 0;
+}
+
+/* Mapping Title text to match the icon colors dynamically per row item */
+.ethos-feature-item:nth-child(1) .ethos-feature-title {
+    color: #CF6D38;
+}
+
+/* Orange Bell */
+.ethos-feature-item:nth-child(2) .ethos-feature-title {
+    color: #0B4CAC;
+}
+
+/* Blue Shield */
+.ethos-feature-item:nth-child(3) .ethos-feature-title {
+    color: #B59A5A;
+}
+
+/* Gold Star */
+
+.ethos-feature-desc {
+    margin: 0;
+}
+
+/* Master Mobile Adjustments */
+@media (max-width: 991px) {
+    .ethos-split {
+        grid-template-columns: 1fr;
+        gap: calc(var(--section-py) * 1.2);
+    }
+
+    .ethos-media__col.left-img,
+    .ethos-media__col.right-img {
+        transform: translateY(0);
+        /* Undo stagger safely so they don't break box */
+    }
+
+    .ethos-content {
+        padding-left: 0;
+        max-width: 100%;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .ethos-watermark {
+        right: -20vw;
+    }
+
+    .ethos-features {
+        flex-direction: column;
+        gap: 32px;
+    }
+
+    .ethos-feature-item {
+        max-width: 400px;
+        margin: 0 auto;
+        text-align: left;
+        /* Keep trust icon formatting strictly left */
+    }
+}
+
+@media (max-width: 480px) {
+    .ethos-media {
+        grid-template-columns: 1fr;
+        /* Stack into a single tower of dual images */
+        gap: 16px;
+    }
+
+    .ethos-media__col img {
+        min-height: 300px;
+    }
+}

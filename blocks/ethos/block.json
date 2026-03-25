@@ -1,0 +1,32 @@
+{
+  "apiVersion": 3,
+  "name": "child/ethos",
+  "title": "Aura Solis Ethos",
+  "category": "design",
+  "icon": "shield",
+  "description": "Ethos section with double staggered image layout, watermark, and trust features.",
+  "supports": { "html": false, "align": false },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "img1": { "type": "string", "default": "" },
+    "img2": { "type": "string", "default": "" },
+    "watermarkImg": { "type": "string", "default": "" },
+    "badgeText": { "type": "string", "default": "" },
+    "title": { "type": "string", "default": "" },
+    "desc1": { "type": "string", "default": "" },
+    "desc2": { "type": "string", "default": "" },
+    "buttonText": { "type": "string", "default": "" },
+    "buttonLink": { "type": "string", "default": "" },
+    
+    "feature1_icon": { "type": "string", "default": "" },
+    "feature1_title": { "type": "string", "default": "" },
+    "feature1_desc": { "type": "string", "default": "" },
+    "feature2_icon": { "type": "string", "default": "" },
+    "feature2_title": { "type": "string", "default": "" },
+    "feature2_desc": { "type": "string", "default": "" },
+    "feature3_icon": { "type": "string", "default": "" },
+    "feature3_title": { "type": "string", "default": "" },
+    "feature3_desc": { "type": "string", "default": "" }
+  }
+}
