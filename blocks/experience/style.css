@@ -1,0 +1,100 @@
+/* Experience Architecture Blueprint */
+
+.experience-section {
+    background-color: #FBFAF3; 
+    /* Master vertical padding inherited directly from .section-global (--section-py) */
+}
+
+/* Master Header Alignment */
+.experience-header {
+    text-align: center;
+    margin-bottom: clamp(48px, 6vw, 80px); /* Clean breathing room down to the grid */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.experience-badge {
+    display: inline-block;
+    background-color: #0D1A25; /* Dark Navy Slate */
+    color: #ffffff;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: clamp(16px, 2.5vw, 32px);
+}
+
+.experience-title {
+    margin: 0;
+    color: #333333;
+    max-width: 800px;
+    /* Responsive type fluidly powered by Global H2 */
+}
+
+/* 3-Column Structural Grid */
+.experience-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    /* Strict gap implementations relying purely on clamps to balance space */
+    row-gap: clamp(40px, 5vw, 64px);
+    column-gap: clamp(32px, 4vw, 56px);
+}
+
+/* Base Feature Row Formatting */
+.experience-item {
+    display: flex;
+    align-items: flex-start; /* Anchor icons strictly to the top line of text */
+    gap: clamp(16px, 2.5vw, 24px);
+}
+
+/* Dynamic Icon Wrapper to prevent graphic distortion */
+.experience-item__icon-wrap {
+    flex-shrink: 0; 
+    width: clamp(40px, 4.5vw, 56px); 
+    display: flex;
+    justify-content: center;
+}
+
+.experience-item__icon {
+    width: 100%;
+    height: auto;
+    object-fit: contain; /* Prevents long/tall svgs from breaking the uniform row height */
+}
+
+/* Copy Stack - Defers 100% to Master Global tokens */
+.experience-item__content {
+    display: flex;
+    flex-direction: column;
+}
+
+.experience-item__title {
+    color: #333333;
+    margin: 0 0 8px 0; /* Only defining the tight margin lock, let Global H3 scale the size */
+}
+
+.experience-item__desc {
+    color: #555555;
+    margin: 0;
+    /* Font size and line-height natively inherited from Global Paragraph */
+}
+
+/* Responsive Breakdown Strategy */
+@media (max-width: 991px) {
+    .experience-grid {
+        grid-template-columns: repeat(2, 1fr); /* Step down to exactly two columns on iPads */
+    }
+}
+
+@media (max-width: 600px) {
+    .experience-grid {
+        grid-template-columns: 1fr; /* Pure stack on standard mobiles */
+    }
+    
+    .experience-item {
+        align-items: flex-start; /* Maintain strict structural left-alignment for quick scanning */
+    }
+}

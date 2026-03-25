@@ -1,0 +1,16 @@
+{
+  "apiVersion": 3,
+  "name": "child/experience",
+  "title": "Aura Solis Experience",
+  "category": "design",
+  "icon": "grid-view",
+  "description": "Experience features block displaying a 3-column architectural icon grid.",
+  "supports": { "html": false, "align": false },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "badge": { "type": "string", "default": "REFINED LIVING" },
+    "title": { "type": "string", "default": "Elevated Guest Experiences" },
+    "items": { "type": "array", "default": [] }
+  }
+}
