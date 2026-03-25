@@ -19,6 +19,27 @@ function aura_solis_enqueue_google_fonts() {
 add_action('wp_enqueue_scripts', 'aura_solis_enqueue_google_fonts');
 
 /**
+ * Enqueue Child Theme Styles
+ */
+function aura_solis_enqueue_child_styles() {
+    $parent_style = 'twentytwentyfive-style'; // parent handle
+    $theme_dir    = get_stylesheet_directory();
+    $theme_uri    = get_stylesheet_directory_uri();
+    
+    // Child style.css versioning
+    $style_path = $theme_dir . '/style.css';
+    $ver = file_exists( $style_path ) ? filemtime( $style_path ) : '1.0.0';
+
+    wp_enqueue_style( 
+        'child-aura-solis-style', 
+        $theme_uri . '/style.css', 
+        [ $parent_style ], 
+        $ver
+    );
+}
+add_action( 'wp_enqueue_scripts', 'aura_solis_enqueue_child_styles' );
+
+/**
  * Preconnect to Google Fonts for faster loading
  */
 function aura_solis_preconnect_google_fonts( $urls, $relation_type ) {

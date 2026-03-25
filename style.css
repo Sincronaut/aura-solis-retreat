@@ -16,6 +16,48 @@ Tags:
 */
 
 /* =========================================
+   Global Design Tokens & Layout
+   (Master Container System)
+   ========================================= */
+
+:root {
+	/* Horizontal Content Spacing (Side Margins) */
+	/* 20px on Mobile → 60px on Desktop */
+	--section-px: clamp(20px, 4.2vw, 60px);
+
+	/* Vertical Section Spacing (Top/Bottom Padding) */
+	/* 60px on Mobile → 120px on Desktop */
+	--section-py: clamp(60px, 8.5vw, 120px);
+
+	/* Master Content Limit */
+	--content-max: 1300px;
+}
+
+/* Master Layout Utilities */
+.section-global {
+	width: 100%;
+	padding-top: var(--section-py);
+	padding-bottom: var(--section-py);
+	position: relative;
+	overflow: hidden;
+}
+
+/* For sections that need extra breathing room */
+.section-py-lg {
+	padding-top: calc(var(--section-py) * 1.5);
+	padding-bottom: calc(var(--section-py) * 1.5);
+}
+
+.container-global {
+	width: 100%;
+	max-width: var(--content-max);
+	margin-left: auto;
+	margin-right: auto;
+	padding-left: var(--section-px);
+	padding-right: var(--section-px);
+}
+
+/* =========================================
    Global Typography Reinforcement
    (Supplements theme.json definitions)
    ========================================= */
@@ -26,6 +68,7 @@ h1, h2, h3, h4, h5, h6,
 	font-family: 'Playfair Display', serif;
 	font-weight: 400;
 	line-height: 1.2;
+	letter-spacing: 0.05em;
 }
 
 h1 { font-size: clamp(40px, 31.5px + 2.25vw, 64px); }     /* 40px → 64px */
@@ -40,6 +83,7 @@ p,
 	font-weight: 400;
 	font-size: clamp(14px, 13.3px + 0.19vw, 16px);         /* 14px → 16px */
 	line-height: 1.6;
+	letter-spacing: 0.05em;
 }
 
 /* --- Links: Lato --- */
@@ -48,14 +92,70 @@ a,
 	font-family: 'Lato', sans-serif;
 	font-weight: 400;
 	font-size: clamp(16px, 15.3px + 0.19vw, 18px);         /* 16px → 18px */
+	letter-spacing: 0.05em;
 }
 
-/* --- Buttons: Lato Bold --- */
+/* --- Global Button Styles (Premium Shimmer) --- */
 .wp-block-button .wp-block-button__link,
 .wp-element-button,
 button,
-input[type="submit"] {
-	font-family: 'Lato', sans-serif;
+input[type="submit"],
+.btn-custom,
+.btn-pill,
+.btn-gold {
+	display: inline-flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
 	font-weight: 700;
-	font-size: clamp(16px, 15.3px + 0.19vw, 18px);         /* 16px → 18px */
+	font-size: clamp(16px, 15.3px + 0.19vw, 18px);
+	letter-spacing: 0.05em;
+	text-decoration: none !important;
+	text-transform: uppercase;
+	padding: 1rem 2.25rem;
+	border-radius: 5px;
+	border: none;
+	cursor: pointer;
+	
+	/* The Shimmer Effect Logic */
+	background-image: linear-gradient(90deg, #B59A5A 0%, #D5C59C 50%, #B59A5A 100%) !important;
+	background-size: 200% auto !important;
+	background-position: left center !important;
+	color: #ffffff !important;
+	
+	transition: background-position 0.4s ease, transform 0.2s ease, box-shadow 0.2s ease !important;
+	box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+}
+
+.wp-block-button .wp-block-button__link:hover,
+.wp-element-button:hover,
+button:hover,
+input[type="submit"]:hover,
+.btn-custom:hover,
+.btn-pill:hover,
+.btn-gold:hover {
+	background-position: right center !important;
+	transform: translateY(-2px) !important;
+	box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25) !important;
+	color: #ffffff !important;
+	outline: none;
+}
+
+.wp-block-button .wp-block-button__link:active,
+.wp-element-button:active,
+button:active,
+.btn-custom:active,
+.btn-pill:active {
+	transform: translateY(1px) !important;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15) !important;
+}
+
+/* Custom variants for flexibility */
+.btn-pill {
+	border-radius: 999px !important;
+}
+
+.btn-sharp {
+	border-radius: 0px !important;
 }

@@ -67,7 +67,8 @@
 			"fontFamily": "var:preset|font-family|lato",
 			"fontSize": "var:preset|font-size|paragraph",
 			"fontWeight": "400",
-			"lineHeight": "1.6"
+			"lineHeight": "1.6",
+			"letterSpacing": "0.05em"
 		},
 		"elements": {
 			"heading": {
@@ -75,7 +76,7 @@
 					"fontFamily": "var:preset|font-family|playfair-display",
 					"fontWeight": "400",
 					"lineHeight": "1.2",
-					"letterSpacing": "0"
+					"letterSpacing": "0.05em"
 				}
 			},
 			"h1": {
@@ -121,7 +122,8 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|lato",
 					"fontSize": "var:preset|font-size|link",
-					"fontWeight": "400"
+					"fontWeight": "400",
+					"letterSpacing": "0.05em"
 				},
 				"color": {
 					"text": "currentColor"
@@ -136,11 +138,15 @@
 				"typography": {
 					"fontFamily": "var:preset|font-family|lato",
 					"fontSize": "var:preset|font-size|link",
-					"fontWeight": "700"
+					"fontWeight": "700",
+					"letterSpacing": "0.05em"
 				},
 				"color": {
-					"background": "var:preset|color|contrast",
-					"text": "var:preset|color|base"
+					"background": "linear-gradient(to bottom, #B59A5A, #D5C59C)",
+					"text": "#ffffff"
+				},
+				"border": {
+					"radius": "5px"
 				},
 				":hover": {
 					"color": {
