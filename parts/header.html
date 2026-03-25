@@ -1,0 +1,47 @@
+<header class="site-header">
+    <div class="header-container">
+        <!-- Navigation Left -->
+        <nav class="header-nav-left">
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/accommodations">Accommodations</a></li>
+                <li><a href="/sustainability">Sustainability</a></li>
+                <li><a href="/contact">Contact</a></li>
+            </ul>
+        </nav>
+
+        <!-- Center Logo -->
+        <a href="/" class="header-logo-link">
+            <!-- Full path to themed assets to ensure resolution in the block-based HTML part -->
+            <img src="/wp-content/themes/child-aura-solis-retreat/assets/images/logo.webp" alt="Aura Solis Retreat" class="header-logo">
+        </a>
+
+        <!-- Actions Right -->
+        <div class="header-actions">
+            <button class="header-search-btn" aria-label="Search">
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                    stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"></circle>
+                    <line x1="21" y1="21" x2="16.65" y2="16.65"></line>
+                </svg>
+            </button>
+            <a href="/book" class="btn-gold header-book-btn">BOOK NOW</a>
+        </div>
+    </div>
+</header>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const header = document.querySelector(".site-header");
+        if (header) {
+            window.addEventListener("scroll", function () {
+                // When scrolled more than 50px, add the dark background class
+                if (window.scrollY > 50) {
+                    header.classList.add("header-scrolled");
+                } else {
+                    header.classList.remove("header-scrolled");
+                }
+            });
+        }
+    });
+</script>
