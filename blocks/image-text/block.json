@@ -1,0 +1,20 @@
+{
+  "apiVersion": 3,
+  "name": "child/image-text",
+  "title": "Aura Solis Image Text",
+  "category": "design",
+  "icon": "columns",
+  "description": "50/50 split layout featuring an image alongside text, contact items, and a call-to-action button.",
+  "supports": { "html": false, "align": false },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "mainImage": { "type": "string", "default": "" },
+    "badge": { "type": "string", "default": "GET IN TOUCH" },
+    "title": { "type": "string", "default": "Talk to Concierge" },
+    "desc": { "type": "string", "default": "" },
+    "contactItems": { "type": "array", "default": [] },
+    "btnText": { "type": "string", "default": "PLAN YOUR STAY" },
+    "btnLink": { "type": "string", "default": "#" }
+  }
+}
