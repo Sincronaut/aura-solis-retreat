@@ -1,0 +1,111 @@
+/* Image-Text Section Frame */
+
+.image-text-section {
+    background-color: #FBFAF3; 
+    /* Massive vertical padding flows organically from .section-global (--section-py) */
+}
+
+/* Bi-Lateral Grid Splitting */
+.image-text-layout {
+    display: flex;
+    align-items: center; /* Vertically center the text mass against the image height */
+    gap: clamp(40px, 6vw, 100px); /* Massive architectural gap enforcing the luxury breath */
+}
+
+/* Image Matrix Engine */
+.image-text__media {
+    flex: 0 0 50%;
+    /* Keep it clean and naked, no hard radiuses unless instructed by identity */
+}
+
+.image-text__img {
+    width: 100%;
+    height: auto; 
+    object-fit: cover;
+    max-height: 800px; /* Lock height to prevent vertical blowouts on extreme aspect ratio source images */
+    border-radius: 5px;
+}
+
+/* Copywriting Column */
+.image-text__content {
+    flex: 1; /* Command remaining 50% dynamically */
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start; /* Ensure left-aligned typographic strictness */
+}
+
+.image-text__badge {
+    display: inline-block;
+    background-color: #0D1A25; /* Identity Navy */
+    color: #ffffff;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+}
+
+.image-text__title {
+    margin: 0 0 24px 0;
+    color: #333333;
+    /* Responsive fonts explicitly deferred to Global H2 tokens */
+}
+
+.image-text__desc {
+    color: #555555;
+    margin: 0 0 40px 0;
+    /* Line height and font size governed by master Global <p> token */
+}
+
+/* Mini Contact Grid Assembly */
+.image-text__contact-list {
+    display: flex;
+    flex-wrap: wrap; /* Allows the items to flow like text natively */
+    row-gap: 20px;
+    column-gap: 32px;
+    margin-bottom: 48px;
+    /* Force wrapping safely before it hits the right edge */
+    max-width: 500px;
+}
+
+.image-text__contact-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.image-text__contact-icon {
+    width: 20px;
+    height: 20px;
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+.image-text__contact-value {
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 14px;
+    color: #333333;
+    font-weight: 700;
+}
+
+/* Responsive Restructuring Strategy */
+@media (max-width: 991px) {
+    .image-text-layout {
+        flex-direction: column;
+        gap: clamp(48px, 6vw, 64px); /* Convert horizontal breath to vertical padding */
+    }
+    
+    .image-text__media {
+        width: 100%; /* Collapse out of the 50/50 restriction */
+    }
+}
+
+@media (max-width: 600px) {
+    .image-text__contact-list {
+        flex-direction: column; /* Force deep stack on pure mobile to preserve long email addresses */
+        gap: 20px;
+    }
+}
