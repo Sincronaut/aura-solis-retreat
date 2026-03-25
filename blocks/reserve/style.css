@@ -1,0 +1,265 @@
+.reserve-section {
+    background-color: #FBFAF3;
+    /* Using global-section padding */
+}
+
+.reserve-header {
+    text-align: center;
+    margin-bottom: clamp(40px, 6vw, 64px);
+}
+
+.reserve-badge-top {
+    display: inline-block;
+    background-color: #0D1A25;
+    color: #ffffff;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    padding: 6px 14px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 30px;
+}
+
+.reserve-section-title {
+    margin: 0 auto;
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(32px, 3.5vw, 52px);
+    line-height: 1.2;
+    max-width: 900px;
+}
+
+/* Main Card Container */
+.reserve-card {
+    display: flex;
+    background: #ffffff;
+    border-radius: 4px;
+    overflow: visible;
+    /* To allow the badge to overlap */
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.05);
+    min-height: 600px;
+    position: relative;
+    box-sizing: border-box;
+    max-width: 1500px;
+    margin: 0 auto;
+}
+
+/* Left Content Info */
+.reserve-card__info {
+    flex: 0 0 50%;
+    padding: clamp(40px, 5vw, 80px);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+.reserve-room-title {
+    margin: 0 0 24px 0;
+    /* Global styles for h3 will be used */
+}
+
+.reserve-room-desc {
+    color: #555555;
+    margin-bottom: 40px;
+    /* Global styles for p will be used */
+}
+
+/* Amenities Grid */
+.reserve-amenities {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    margin-bottom: 60px;
+}
+
+.reserve-amenity-item {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.reserve-amenity-icon {
+    width: 24px;
+    height: 24px;
+    object-fit: contain;
+}
+
+.reserve-amenity-text {
+    font-family: 'Lato', sans-serif;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    color: #0D1A25;
+}
+
+/* Actions */
+.reserve-actions {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.btn-outline {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 1rem 2.25rem;
+    border-radius: 5px;
+    border: 1.5px solid #0D1A25;
+    background: transparent;
+    color: #0D1A25;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.btn-outline:hover {
+    background: #0D1A25;
+    color: #ffffff;
+}
+
+/* Right Media Group */
+.reserve-card__media {
+    flex: 0 0 50%;
+    position: relative;
+    border-radius: 0 4px 4px 0;
+    overflow: hidden;
+    /* This clips the image */
+    box-sizing: border-box;
+}
+
+.reserve-card__media .reserve-main-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Scalloped Price Badge - 8-lobed Rosette (Pure CSS geometry) */
+.reserve-price-badge {
+    position: absolute;
+    bottom: -40px;
+    right: -40px;
+    width: 160px;
+    height: 160px;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    /* Soft drop shadow behind the whole rosette */
+    filter: drop-shadow(0 15px 25px rgba(0,0,0,0.1));
+}
+
+/* The Gold Outer Shape (Two rounded rectangles rotated 45deg over each other) */
+.reserve-price-badge::before,
+.reserve-price-badge::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #B59A5A;
+    border-radius: 32px; /* Curves the points into smooth scallops */
+    z-index: 1;
+}
+.reserve-price-badge::after {
+    transform: rotate(45deg);
+}
+
+/* The White Inner Layer (Creates the thick gold border effect) */
+.reserve-price-badge-inner-bg {
+    position: absolute;
+    inset: 16px; /* 16px thickness for the gold border */
+    z-index: 2;
+}
+.reserve-price-badge-inner-bg::before,
+.reserve-price-badge-inner-bg::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: #FBFAF3; /* Match theme's soft white */
+    border-radius: 20px; /* Slightly tighter radius for inner layer */
+}
+.reserve-price-badge-inner-bg::after {
+    transform: rotate(45deg);
+}
+
+/* The actual text container layered on top */
+.reserve-price-badge__content {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.reserve-price-starting {
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 14px;
+    font-style: normal;
+    color: #333333;
+    margin-bottom: 2px;
+}
+
+.reserve-price-val {
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 32px;
+    color: #B59A5A;
+    line-height: 1.1;
+}
+
+.reserve-price-unit {
+    font-family: 'Lato', sans-serif;
+    font-weight: 400;
+    font-size: 14px;
+    text-transform: uppercase;
+    color: #333333;
+}
+
+/* Responsive */
+@media (max-width: 991px) {
+    .reserve-card {
+        flex-direction: column;
+        overflow: visible;
+    }
+
+    .reserve-card__info,
+    .reserve-card__media {
+        flex: 0 0 100%;
+    }
+
+    .reserve-card__media {
+        height: 400px;
+        order: -1;
+        border-radius: 4px 4px 0 0;
+    }
+
+    .reserve-price-badge {
+        bottom: -20px;
+        right: 20px;
+    }
+}
+
+@media (max-width: 480px) {
+    .reserve-amenities {
+        grid-template-columns: 1fr;
+    }
+
+    .reserve-actions {
+        flex-direction: column;
+    }
+
+    .btn-gold,
+    .btn-outline {
+        width: 100%;
+    }
+}

@@ -1,0 +1,28 @@
+{
+  "apiVersion": 3,
+  "name": "child/reserve",
+  "title": "Aura Solis Reserve",
+  "category": "design",
+  "icon": "building",
+  "description": "Premium room reservation block with 2-column layout and price badge.",
+  "supports": { "html": false, "align": false },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "badgeText": { "type": "string", "default": "CURATED COMFORT" },
+    "sectionTitle": { "type": "string", "default": "" },
+    "roomTitle": { "type": "string", "default": "" },
+    "roomDesc": { "type": "string", "default": "" },
+    "mainImage": { "type": "string", "default": "" },
+    "reserveBtnText": { "type": "string", "default": "RESERVE NOW" },
+    "reserveBtnLink": { "type": "string", "default": "#" },
+    "detailsBtnText": { "type": "string", "default": "EXPLORE DETAILS" },
+    "detailsBtnLink": { "type": "string", "default": "#" },
+    "priceAmount": { "type": "string", "default": "450" },
+    "priceUnit": { "type": "string", "default": "/ NIGHT" },
+    "amenities": {
+        "type": "array",
+        "default": []
+    }
+  }
+}
