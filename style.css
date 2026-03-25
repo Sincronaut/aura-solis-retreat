@@ -20,14 +20,21 @@ Tags:
    (Master Container System)
    ========================================= */
 
+html, body {
+	margin: 0;
+	padding: 0;
+	width: 100%;
+	overflow-x: hidden; /* Prevents right-side horizontal scrolling and white gaps */
+}
+
 :root {
 	/* Horizontal Content Spacing (Side Margins) */
 	/* 20px on Mobile → 60px on Desktop */
-	--section-px: clamp(20px, 4.2vw, 60px);
+	--section-px: clamp(20px, 4.2vw, 90px);
 
 	/* Vertical Section Spacing (Top/Bottom Padding) */
 	/* 60px on Mobile → 120px on Desktop */
-	--section-py: clamp(60px, 8.5vw, 120px);
+	--section-py: clamp(60px, 8.5vw, 80px);
 
 	/* Master Content Limit */
 	--content-max: 1920px;

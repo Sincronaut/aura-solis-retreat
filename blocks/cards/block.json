@@ -1,0 +1,33 @@
+{
+  "apiVersion": 3,
+  "name": "child/cards",
+  "title": "Aura Solis Cards Carousel",
+  "category": "design",
+  "icon": "columns",
+  "description": "A reusable carousel block that displays cards in groups. Set isCarousel to false for a simple 3-column row.",
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "style": "file:./style.css",
+  "script": "file:./script.js",
+  "render": "file:./render.php",
+  "attributes": {
+    "sectionTitle": { "type": "string", "default": "" },
+    "isCarousel": { "type": "boolean", "default": true },
+    "items": {
+      "type": "array",
+      "default": [
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" },
+        { "title": "", "desc": "", "img": "", "link": "#" }
+      ]
+    }
+  }
+}
