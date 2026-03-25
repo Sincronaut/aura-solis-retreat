@@ -1,0 +1,29 @@
+{
+  "apiVersion": 3,
+  "name": "child/features",
+  "title": "Aura Solis Features",
+  "category": "design",
+  "icon": "grid-view",
+  "description": "A 3-column section showcasing the retreat's core pillars with icons, titles, and descriptions.",
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "backgroundColor": {
+      "type": "string",
+      "default": "#FBFAF3"
+    },
+    "feature1_icon": { "type": "string", "default": "" },
+    "feature1_title": { "type": "string", "default": "" },
+    "feature1_desc": { "type": "string", "default": "" },
+    "feature2_icon": { "type": "string", "default": "" },
+    "feature2_title": { "type": "string", "default": "" },
+    "feature2_desc": { "type": "string", "default": "" },
+    "feature3_icon": { "type": "string", "default": "" },
+    "feature3_title": { "type": "string", "default": "" },
+    "feature3_desc": { "type": "string", "default": "" }
+  }
+}
