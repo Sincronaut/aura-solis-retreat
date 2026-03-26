@@ -11,6 +11,9 @@ $contactItems = $A['contactItems'] ?? [];
 $btnText      = $A['btnText'] ?? '';
 $btnLink      = $A['btnLink'] ?? '#';
 
+$imagePosition = $A['imagePosition'] ?? 'left'; // 'left' or 'right'
+$imageFit      = $A['imageFit'] ?? 'cover'; // 'cover' or 'contain'
+
 // Dynamically resolve image path relative to the active theme/environment
 if ( ! empty( $mainImage ) && strpos( $mainImage, '/assets' ) === 0 ) {
     $mainImage = get_stylesheet_directory_uri() . $mainImage;
@@ -23,20 +26,29 @@ foreach ( $contactItems as &$ci ) {
     }
 }
 unset( $ci );
+
+// CSS architecture for flipping layout
+$layout_class = 'image-text-layout';
+if ( $imagePosition === 'right' ) {
+    $layout_class .= ' image-text-layout--flip';
+}
 ?>
 
-<section class="section-global image-text-section">
+<section class="section-global image-text-section bg-cream">
     <div class="container-global">
-        <div class="image-text-layout">
+        <div class="<?php echo esc_attr( $layout_class ); ?>">
             
-            <!-- Left: Hero Imagery -->
+            <!-- Left (or Right reversed): Hero Imagery -->
             <div class="image-text__media">
                 <?php if ( ! empty( $mainImage ) ) : ?>
-                    <img src="<?php echo esc_url( $mainImage ); ?>" alt="<?php echo esc_attr( $title ); ?>" class="image-text__img" loading="lazy">
+                    <img src="<?php echo esc_url( $mainImage ); ?>" 
+                         alt="<?php echo esc_attr( $title ); ?>" 
+                         class="image-text__img <?php echo $imageFit === 'contain' ? 'image-text__img--contain' : ''; ?>" 
+                         loading="lazy">
                 <?php endif; ?>
             </div>
 
-            <!-- Right: Semantic Content Column -->
+            <!-- Right (or Left reversed): Semantic Content Column -->
             <div class="image-text__content">
                 <?php if ( ! empty( $badge ) ) : ?>
                     <span class="image-text__badge"><?php echo esc_html( $badge ); ?></span>
@@ -47,7 +59,9 @@ unset( $ci );
                 <?php endif; ?>
 
                 <?php if ( ! empty( $desc ) ) : ?>
-                    <p class="image-text__desc"><?php echo esc_html( $desc ); ?></p>
+                    <div class="image-text__desc">
+                        <?php echo wp_kses_post( $desc ); ?>
+                    </div>
                 <?php endif; ?>
 
                 <!-- Dynamic Contact Sub-grid -->

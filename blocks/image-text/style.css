@@ -12,6 +12,11 @@
     gap: clamp(40px, 6vw, 100px); /* Massive architectural gap enforcing the luxury breath */
 }
 
+/* Modifier state allowing the layout to reverse symmetrically on demand */
+.image-text-layout--flip {
+    flex-direction: row-reverse;
+}
+
 /* Image Matrix Engine */
 .image-text__media {
     flex: 0 0 50%;
@@ -60,6 +65,11 @@
     /* Line height and font size governed by master Global <p> token */
 }
 
+/* Safely space multiple paragraphs if rich-text is injected */
+.image-text__desc p:not(:last-child) {
+    margin-bottom: 24px;
+}
+
 /* Mini Contact Grid Assembly */
 .image-text__contact-list {
     display: flex;
@@ -93,9 +103,10 @@
 
 /* Responsive Restructuring Strategy */
 @media (max-width: 991px) {
-    .image-text-layout {
-        flex-direction: column;
-        gap: clamp(48px, 6vw, 64px); /* Convert horizontal breath to vertical padding */
+    .image-text-layout,
+    .image-text-layout--flip {
+        flex-direction: column-reverse; /* Re-stack cleanly with content on top of image on iPads/mobile */
+        gap: clamp(48px, 6vw, 64px); 
     }
     
     .image-text__media {
