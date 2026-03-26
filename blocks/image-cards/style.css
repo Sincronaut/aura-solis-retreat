@@ -1,0 +1,80 @@
+/* =========================================
+   Staggered Image Gallery Master Logic 
+   ========================================= */
+
+.image-cards-block {
+    background-color: #FBFAF3; /* Inherit Cream identity natively */
+    overflow: hidden; /* Protect the x-axis bounding box natively */
+}
+
+/* Master Grid logic */
+.image-cards-wrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Set origin baseline identically in center */
+    gap: clamp(16px, 2vw, 32px); /* Tight dynamic gaps so images feel cohesive */
+    padding: 60px 0; /* Huge vertical buffer so drop shadows don't clip against next block */
+    width: 100%;
+}
+
+/* Base Card Blueprint */
+.image-card {
+    flex: 0 0 auto; /* Hard-lock width structure against automatic flex box shrinking */
+    width: clamp(180px, 15%, 280px); /* Responsive sizing matching Figma proportions */
+    aspect-ratio: 3 / 4; /* Forced perfect vertical crop regardless of user image uploads */
+    border-radius: 4px; /* Delicate premium corner styling */
+    overflow: hidden; /* Clip inner background images securely */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); /* Soft, luxurious floating effect */
+    transition: transform 0.5s cubic-bezier(0.25, 0.8, 0.25, 1), box-shadow 0.5s ease;
+    cursor: pointer;
+}
+
+/* The Native Zig-Zag Mechanical Offset */
+.image-card:nth-child(odd) {
+    transform: translateY(30px); /* Push Odd (1, 3, 5) securely Downwards */
+}
+
+.image-card:nth-child(even) {
+    transform: translateY(-30px); /* Force Even (2, 4, 6) explicitly Upwards */
+}
+
+/* Advanced Hover Mechanics (Optional premium feel) */
+.image-card:hover {
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+    z-index: 10; /* Pop layer above neighbors */
+}
+
+/* Dynamic Hover lifting from their existing baselines */
+.image-card:nth-child(odd):hover {
+    transform: translateY(20px) scale(1.02); /* Rise dynamically from bottom */
+}
+
+.image-card:nth-child(even):hover {
+    transform: translateY(-40px) scale(1.02); /* Rise dynamically from top */
+}
+
+/* Inner Background Crop Control */
+.image-card__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Absolutely ensure no blank white spaces exist */
+    object-position: center;
+}
+
+/* =========================================
+   RESPONSIVE ENGINES (Mobile Swipe Support)
+   ========================================= */
+@media (max-width: 1200px) {
+    .image-cards-wrapper {
+        justify-content: flex-start;
+        /* Unlock raw horizontal scroll */
+        overflow-x: auto; 
+        scroll-snap-type: x mandatory; /* Force iPad horizontal snapping naturally */
+        padding-bottom: 80px; 
+    }
+    
+    .image-card {
+        scroll-snap-align: center;
+        width: 240px; /* Lock rigid sizing on scroll so Flexbox doesn't smash them */
+    }
+}

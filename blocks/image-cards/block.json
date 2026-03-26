@@ -1,0 +1,27 @@
+{
+  "apiVersion": 3,
+  "name": "child/image-cards",
+  "title": "Aura Solis Staggered Image Cards",
+  "category": "design",
+  "icon": "format-gallery",
+  "description": "A 6-pane luxury staggered image gallery.",
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "images": {
+      "type": "array",
+      "default": [
+        {"url": "/assets/images/image-cards/1.webp", "alt": "Location Image 1"},
+        {"url": "/assets/images/image-cards/2.webp", "alt": "Location Image 2"},
+        {"url": "/assets/images/image-cards/3.webp", "alt": "Location Image 3"},
+        {"url": "/assets/images/image-cards/4.webp", "alt": "Location Image 4"},
+        {"url": "/assets/images/image-cards/5.webp", "alt": "Location Image 5"},
+        {"url": "/assets/images/image-cards/6.webp", "alt": "Location Image 6"}
+      ]
+    }
+  }
+}
