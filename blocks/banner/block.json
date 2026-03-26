@@ -31,6 +31,10 @@
     "imageUrl": {
       "type": "string",
       "default": ""
+    },
+    "isInner": {
+      "type": "boolean",
+      "default": false
     }
   }
 }

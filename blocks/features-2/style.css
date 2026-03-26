@@ -1,0 +1,169 @@
+/* Features 2 Block Specific Styling */
+
+.features-2-block {
+    background-color: #FBFAF3; /* Deep Identity Cream */
+}
+
+/* Master Grid split */
+.features-2-grid {
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Locks the large title vertically with the complex feature table */
+    gap: clamp(40px, 6vw, 100px); /* 40px mobile -> 100px desktop breathing room */
+}
+
+/* LEFT PILLAR -> The Massive Title */
+.f2-left {
+    flex: 0 0 35%; /* Firmly anchors 35% of the overall width */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.f2-left h2 {
+    color: #333333;
+    margin: 0;
+    line-height: 1.1;
+    /* Font size natively supported by style.css mapping */
+}
+
+/* RIGHT PILLAR -> The Feature Modules */
+.f2-right {
+    flex: 1; /* Absorbs all remaining layout */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Base logic for internal grid rows */
+.f2-row {
+    display: flex;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.f2-row--top {
+    padding-bottom: 32px; /* Breathing room above the main horizontal separator */
+    align-items: flex-start;
+}
+
+.f2-row--bottom {
+    padding-top: 32px; /* Breathing room beneath the master separator */
+    justify-content: center; /* Automatically center the lone third feature */
+}
+
+/* Each internal split block */
+.f2-item {
+    flex: 1; /* Ensures absolute 50/50 sizing natively for side-by-side elements */
+    display: flex;
+    flex-direction: column;
+}
+
+/* Inner header component locking the icon beside the text */
+.f2-item-header {
+    display: flex;
+    align-items: center;
+    gap: 16px; /* Space between icon and text */
+    margin-bottom: 12px;
+}
+
+/* The third centered feature module */
+.f2-item--centered {
+    align-items: center; /* Locks the child elements (icon, title, p) into the perfect center stack */
+    text-align: center;
+    max-width: 80%; /* Squeezes the edges so the text stays compact and elegant */
+}
+
+.f2-item-header--centered {
+    justify-content: center; /* Merely center the side-by-side flex group natively */
+    margin-bottom: 20px;
+}
+
+.f2-icon {
+    width: auto;
+    height: 48px; /* Boosted from 32px for stronger visual anchor */
+    object-fit: contain;
+}
+
+/* Text Mechanics */
+.f2-item-title {
+    color: #333333;
+    margin: 0;
+}
+
+.f2-item-desc {
+    color: #666666;
+    margin: 0;
+    font-size: 14px; /* Slightly tighter text sizing for grid clarity */
+    line-height: 1.6;
+}
+
+/* The Grid Separation system */
+.f2-divider--vertical {
+    width: 1px;
+    background-color: #8D8D8D; /* Exact matching grey separator tone */
+    margin: 0 40px; /* Space between the two columns */
+    flex-shrink: 0;
+}
+
+.f2-divider--horizontal {
+    height: 1px;
+    width: 100%;
+    background-color: #8D8D8D; 
+}
+
+
+/* =========================================
+   Responsive Breakdown Mechanics
+   ========================================= */
+
+/* Tablet & iPad Portrait */
+@media (max-width: 991px) {
+    .features-2-grid {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .f2-left {
+        flex: 1;
+        width: 100%;
+        margin-bottom: 32px;
+        align-items: center; /* Locks the master title center */
+    }
+    
+    /* Remove padding logic that forces text away from center */
+    .f2-left h2 {
+        text-align: center;
+    }
+
+    /* Shift all features inside the right column into center stack natively */
+    .f2-item {
+        align-items: center;
+        text-align: center;
+    }
+
+    .f2-item-header {
+        flex-direction: column; /* Forces icons above text for ALL items on mobile */
+        justify-content: center;
+    }
+}
+
+/* Mobile Screens */
+@media (max-width: 600px) {
+    .f2-row--top {
+        flex-direction: column;
+        gap: 40px;
+        padding-bottom: 40px;
+    }
+
+    .f2-row--bottom {
+        padding-top: 40px;
+    }
+
+    .f2-divider--vertical {
+        display: none; /* Collapse vertical divider when stacked vertically */
+    }
+    
+    .f2-item--centered {
+        max-width: 100%;
+    }
+}
