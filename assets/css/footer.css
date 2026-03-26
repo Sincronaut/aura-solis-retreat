@@ -1,0 +1,285 @@
+/* General Footer Structure */
+.site-footer {
+    width: 100%;
+    color: rgba(255, 255, 255, 0.85); /* Readability scaling against dark navy */
+    background-color: #0D1A25; /* Identity Navy Base */
+}
+
+/* Layout Wrapper referencing global tokens */
+.footer-container {
+    max-width: var(--content-max);
+    margin: 0 auto;
+    padding: 0 var(--section-px);
+    width: 100%;
+    box-sizing: border-box; /* Crucial fix for 100vw width mathematical overflow */
+}
+
+/* =========================================
+   TOP TIER (Newsletter Integration)
+   ========================================= */
+.footer-top {
+    padding: clamp(32px, 4vw, 56px) 0;
+}
+
+.footer-newsletter {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 40px;
+    flex-wrap: wrap; /* Additional safety net for narrow desktop viewports */
+}
+
+.newsletter-content {
+    display: flex;
+    align-items: baseline; /* Locks title and desc perfectly horizontal */
+    gap: 24px;
+    flex-wrap: wrap; /* Safety drop for iPads */
+}
+
+.newsletter-title {
+    color: #ffffff;
+    margin: 0;
+    font-size: clamp(24px, 2.5vw, 32px); /* Specifically controlled scale for footer block */
+}
+
+.newsletter-desc {
+    margin: 0;
+    /* Defers to 16px Global Default <p> typography */
+}
+
+.newsletter-form {
+    display: flex;
+    align-items: stretch;
+    background: #ffffff;
+    border-radius: 4px;
+    padding: 4px;
+    width: 100%;
+    max-width: 500px; /* Lock form limits */
+}
+
+.newsletter-input {
+    flex: 1;
+    border: none;
+    padding: 12px 20px;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    outline: none;
+    color: #333333;
+    background: transparent;
+}
+
+.newsletter-input::placeholder {
+    color: #a0a0a0;
+    text-transform: uppercase;
+}
+
+.newsletter-btn {
+    padding: 12px 24px !important;
+    font-size: 12px !important;
+    white-space: nowrap;
+    border-radius: 4px !important; /* Squaring off button perfectly inside input block */
+}
+
+/* =========================================
+   MIDDLE TIER (Master Grid & Links)
+   ========================================= */
+.footer-middle {
+    padding: clamp(60px, 8vw, 100px) 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.15); /* Ultra clean split-line */
+}
+
+.footer-grid {
+    display: grid;
+    /* Dynamic 5-column architecture matching Figma footprint */
+    grid-template-columns: 2.5fr 1fr 1fr 1fr 1.5fr;
+    gap: clamp(32px, 4vw, 56px);
+}
+
+/* Brand Logic */
+.footer-brand {
+    padding-right: clamp(20px, 4vw, 60px);
+}
+
+.footer-logo {
+    height: 56px;
+    width: auto;
+    margin-bottom: 24px;
+    object-fit: contain;
+}
+
+.footer-brand-desc {
+    margin: 0 0 32px 0;
+    line-height: 1.8;
+}
+
+.footer-socials {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-socials a img {
+    height: 24px;
+    width: 24px;
+    object-fit: contain;
+    transition: opacity 0.3s ease, filter 0.3s ease;
+    filter: brightness(0) invert(1); /* Forces dark SVGs or PNGs to render as pure white */
+}
+
+.footer-socials a:hover img {
+    opacity: 0.7; /* Simplistic interaction standard */
+}
+
+/* Lists Mechanics */
+.footer-links-title {
+    color: #ffffff;
+    margin: 0 0 32px 0;
+    font-size: 24px !important; 
+}
+
+.footer-links ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px; /* High legibility space */
+}
+
+.footer-links a,
+.footer-links span {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 15px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: #B59A5A; /* Gold trigger */
+}
+
+/* Custom Contact Layout (Images + Text) */
+.footer-contact ul li {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    margin-bottom: 8px; /* Offset the 16px gap to tighten up vertical visual grouping */
+}
+
+.footer-contact .contact-icon {
+    width: 16px;
+    height: 16px;
+    margin-top: 4px; /* Fix visual alignment against taller Lato text lines */
+    object-fit: contain;
+    flex-shrink: 0;
+}
+
+/* =========================================
+   BOTTOM TIER (Legal System)
+   ========================================= */
+.footer-bottom {
+    background-color: #FBFAF3; /* Deep Identity Core Off-White */
+    padding: 24px 0;
+    border-top: 1px solid #e0dfd5; /* Soft contrast edge */
+}
+
+.footer-bottom-layout {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-legal {
+    display: flex;
+    align-items: center;
+    gap: clamp(16px, 2vw, 32px);
+}
+
+.footer-legal a {
+    color: #555555;
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 14px;
+    font-weight: 700;
+    transition: color 0.3s ease;
+}
+
+.footer-legal a:hover {
+    color: #B59A5A;
+}
+
+.footer-legal .divider {
+    color: #cccccc;
+}
+
+.footer-copyright p {
+    margin: 0;
+    color: #555555;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 14px;
+}
+
+/* =========================================
+   RESPONSIVE ENGINES
+   ========================================= */
+@media (max-width: 1200px) {
+    .footer-grid {
+        grid-template-columns: repeat(3, 1fr); /* Transition to 3 pillars */
+    }
+    .footer-brand {
+        grid-column: span 3; /* Push brand info fully to the top line */
+        padding-right: 0;
+        margin-bottom: 24px;
+    }
+}
+
+@media (max-width: 991px) {
+    .footer-newsletter {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 24px;
+    }
+    .newsletter-content {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 8px;
+    }
+    .newsletter-form {
+        max-width: 100%;
+    }
+    
+    .footer-bottom-layout {
+        flex-direction: column;
+        gap: 16px;
+        text-align: center;
+    }
+    .footer-legal {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    .footer-grid {
+        grid-template-columns: 1fr; /* Stack totally vertically */
+        gap: 40px;
+    }
+    .footer-brand {
+        grid-column: span 1;
+    }
+    
+    .newsletter-form {
+        flex-direction: column;
+        background: transparent;
+        padding: 0;
+        gap: 12px;
+    }
+    .newsletter-input {
+        width: 100%;
+        background: #ffffff;
+        border-radius: 4px;
+    }
+    .newsletter-btn {
+        width: 100%;
+    }
+}
