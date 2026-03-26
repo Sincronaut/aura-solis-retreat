@@ -1,0 +1,34 @@
+{
+    "apiVersion": 2,
+    "name": "child/contact",
+    "title": "Contact split form & newsletter",
+    "category": "design",
+    "attributes": {
+        "formTitle": {
+            "type": "string",
+            "default": ""
+        },
+        "formDesc": {
+            "type": "string",
+            "default": ""
+        },
+        "newsletterTitle": {
+            "type": "string",
+            "default": ""
+        },
+        "newsletterDesc": {
+            "type": "string",
+            "default": ""
+        },
+        "newsletterBg": {
+            "type": "string",
+            "default": ""
+        }
+    },
+    "supports": {
+        "html": false
+    },
+    "textdomain": "child-aura-solis-retreat",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}

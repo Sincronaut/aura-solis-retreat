@@ -1,0 +1,196 @@
+/* =========================================
+   Contact & Newsletter Split Block
+   ========================================= */
+
+.contact-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: clamp(40px, 8vw, 120px);
+    align-items: stretch;
+}
+
+/* =========================================
+   LEFT: INQUIRY FORM
+   ========================================= */
+.contact-inquiry {
+    padding-right: clamp(0px, 4vw, 40px);
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-title {
+    margin-bottom: 24px;
+    color: var(--text-dark, #333333);
+}
+
+.contact-desc {
+    color: #555555;
+    margin-bottom: 40px;
+}
+
+/* Form Structural Core */
+.aura-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+}
+
+.form-row-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+}
+
+.form-group label {
+    font-size: 14px;
+    color: #555555;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    box-sizing: border-box; /* Secures width to exactly 100% regardless of heavy padding */
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid #E0E0E0;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    color: #333333;
+    font-family: inherit;
+    font-size: 15px;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+    outline: none;
+}
+
+.form-group textarea {
+    resize: vertical;
+    min-height: 140px;
+}
+
+/* Luxury Focus State */
+.form-group input:focus,
+.form-group textarea:focus {
+    border-color: #B59A5A;
+    box-shadow: 0 0 0 2px rgba(181, 154, 90, 0.2);
+}
+
+/* Submit Master Button */
+.form-submit-btn {
+    margin-top: 16px;
+    width: 100%;
+    text-align: center;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    font-weight: 700;
+    padding: 18px 24px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* =========================================
+   RIGHT: NEWSLETTER BOX
+   ========================================= */
+.contact-newsletter {
+    position: relative;
+    border-radius: 4px;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: clamp(40px, 6vw, 80px) clamp(20px, 4vw, 60px);
+    box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+    min-height: 500px; /* Lock visual weight with left side */
+}
+
+/* User-Requested Deep Navy Overlay */
+.contact-newsletter .newsletter-overlay {
+    position: absolute;
+    inset: 0;
+    background-color: rgba(13, 27, 42, 0.75); /* #0D1B2A natively converted */
+    z-index: 1;
+}
+
+.contact-newsletter .newsletter-content {
+    position: relative;
+    z-index: 2; /* Forces text cleanly above the overlay */
+    width: 100%;
+    max-width: 450px;
+    color: #FFFFFF;
+}
+
+.contact-newsletter .newsletter-title {
+    color: #FFFFFF;
+    margin-bottom: 24px;
+}
+
+.contact-newsletter .newsletter-desc {
+    color: rgba(255, 255, 255, 0.9);
+    margin-bottom: 40px;
+}
+
+/* Subscriber Inputs */
+.contact-newsletter .newsletter-form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px; /* Widened the gap so they are clearly disconnected */
+    background: transparent !important; /* Protect against global form block rules merging them into one card */
+    padding: 0;
+}
+
+.contact-newsletter .newsletter-form .form-group input {
+    box-sizing: border-box;
+    width: 100%;
+    padding: 16px 20px;
+    border: 1px solid transparent; /* Hide border entirely on dark bg */
+    border-radius: 4px;
+    background-color: #FFFFFF;
+}
+
+.contact-newsletter .newsletter-submit-btn {
+    box-sizing: border-box;
+    width: 100%;
+    border: none;
+    padding: 18px 24px;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    border-radius: 4px;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUT CASCADE
+   ========================================= */
+@media (max-width: 991px) {
+    .contact-split {
+        grid-template-columns: 1fr; /* Instantly drop to column layout tablet */
+        gap: 64px;
+    }
+    .contact-inquiry {
+        padding-right: 0;
+    }
+    
+    .contact-newsletter {
+        min-height: 400px; /* Relax height restraint when stacked vertical */
+    }
+}
+
+@media (max-width: 600px) {
+    .form-row-2 {
+        grid-template-columns: 1fr; /* First name/Last name stack logically */
+    }
+}
