@@ -16,6 +16,11 @@
     /* Subtler background presence */
     z-index: 0;
     pointer-events: none;
+    transition: transform 0.3s ease;
+}
+
+.ethos-watermark--flip-h {
+    transform: translateY(-50%) scale(-1, -1); /* Flips both vertical AND horizontal */
 }
 
 /* Master container sits ABOVE watermark graphic */
@@ -32,6 +37,28 @@
     align-items: center;
     margin-bottom: calc(var(--section-py) * 1.5);
     /* Master gap down to the features */
+}
+
+/* Symmetrical Inversion for special page variants */
+.ethos-section--reversed .ethos-split {
+    display: flex;
+    flex-direction: row-reverse; /* Reverses DOM organically to put text on Left, images on Right */
+    justify-content: center; /* PERFECTLY Center the entire bundle across the screen */
+    align-items: center;
+    gap: calc(var(--section-px) * 1.5);
+    margin-left: auto;
+    margin-right: auto;
+    max-width: none; /* Release the cage so images grow properly again */
+}
+
+/* Ensure child elements maintain proper desktop scales natively */
+.ethos-section--reversed .ethos-media {
+    flex: 0 0 50%; /* Claim exactly half the container mathematically just like the grid did */
+}
+
+.ethos-section--reversed .ethos-content {
+    flex: 0 1 550px; /* Lock the text tightly so flex doesn't stretch it out */
+    padding: 0; /* Clear left padding so it sits flush inside its new flex box */
 }
 
 /* Left: The Architectural Image Stagger */

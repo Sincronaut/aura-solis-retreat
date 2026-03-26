@@ -3,6 +3,9 @@ if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $A = is_array( $attributes ?? null ) ? $attributes : [];
 
+$isReversed      = $A['isReversed'] ?? false;
+$watermarkFlipH  = $A['watermarkFlipH'] ?? false;
+
 // Automatically point all generic paths to the Theme's Asset Directory
 $img_keys = [ 'img1', 'img2', 'watermarkImg', 'feature1_icon', 'feature2_icon', 'feature3_icon' ];
 foreach ( $img_keys as $key ) {
@@ -10,12 +13,23 @@ foreach ( $img_keys as $key ) {
         $A[ $key ] = get_stylesheet_directory_uri() . $A[ $key ];
     }
 }
+
+// Layout Classes
+$section_classes = 'section-global ethos-section';
+if ( $isReversed ) {
+    $section_classes .= ' ethos-section--reversed';
+}
+
+$watermark_classes = 'ethos-watermark';
+if ( $watermarkFlipH ) {
+    $watermark_classes .= ' ethos-watermark--flip-h';
+}
 ?>
 
-<section class="section-global ethos-section">
+<section class="<?php echo esc_attr( $section_classes ); ?>">
     <!-- Huge Background Watermark Graphic -->
     <?php if ( ! empty( $A['watermarkImg'] ) ) : ?>
-        <img src="<?php echo esc_url( $A['watermarkImg'] ); ?>" class="ethos-watermark" alt="Watermark Graphic" aria-hidden="true" loading="lazy">
+        <img src="<?php echo esc_url( $A['watermarkImg'] ); ?>" class="<?php echo esc_attr( $watermark_classes ); ?>" alt="Watermark Graphic" aria-hidden="true" loading="lazy">
     <?php endif; ?>
 
     <div class="container-global">
