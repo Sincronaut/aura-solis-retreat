@@ -46,6 +46,16 @@ function aura_solis_enqueue_child_styles() {
         [],
         $header_ver
     );
+
+    // Enqueue standalone Footer CSS component
+    $footer_style_path = $theme_dir . '/assets/css/footer.css';
+    $footer_ver = file_exists( $footer_style_path ) ? filemtime( $footer_style_path ) : '1.0.0';
+    wp_enqueue_style(
+        'aura-solis-footer-style',
+        $theme_uri . '/assets/css/footer.css',
+        [],
+        $footer_ver
+    );
 }
 add_action( 'wp_enqueue_scripts', 'aura_solis_enqueue_child_styles' );
 

@@ -6,33 +6,42 @@
     left: 0;
     width: 100%;
     z-index: 9999;
-    padding: 32px 0; /* Wide breathing room for the initial transparent hero float */
-    background-color: transparent; 
-    transition: background-color 0.4s ease, padding 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+    min-height: 160px;
+    /* Luxury height for the initial transparent hero float */
+    display: flex;
+    align-items: center;
+    background-color: transparent;
+    transition: background-color 0.4s ease, min-height 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
 /* Scroll Activated JavaScript State */
 .site-header.header-scrolled {
-    background-color: rgba(13, 26, 37, 0.95); /* Deep Identity Navy with solid readablility */
+    background-color: rgba(13, 26, 37, 0.95);
+    /* Deep Identity Navy with solid readablility */
     backdrop-filter: blur(10px);
     -webkit-backdrop-filter: blur(10px);
-    padding: 16px 0; /* Condense structural padding organically to preserve viewport real estate */
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15); 
+    min-height: 80px;
+    /* Condense structural height organically to preserve viewport real estate */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
 }
 
 /* Flexbox Split Engine */
 .header-container {
     max-width: var(--content-max);
+    width: 100%;
+    /* Ensure it spans the header width */
     margin: 0 auto;
     padding: 0 var(--section-px);
     display: flex;
-    justify-content: space-between; /* Creates the strict 3-zone pillar layout */
+    justify-content: space-between;
+    /* Creates the strict 3-zone pillar layout */
     align-items: center;
 }
 
 /* Left - Identity Nav */
 .header-nav-left {
-    flex: 1; /* Commands exactly 33% width */
+    flex: 1;
+    /* Commands exactly 33% width */
     display: flex;
     justify-content: flex-start;
 }
@@ -42,11 +51,11 @@
     margin: 0;
     padding: 0;
     display: flex;
-    gap: clamp(24px, 3vw, 40px); 
+    gap: clamp(24px, 3vw, 40px);
 }
 
 .header-nav-left a {
-    color: #ffffff; 
+    color: #ffffff;
     text-decoration: none;
     font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
     font-size: 15px;
@@ -55,12 +64,13 @@
 }
 
 .header-nav-left a:hover {
-    color: #B59A5A; /* Gold primary token */
+    color: #B59A5A;
+    /* Gold primary token */
 }
 
 /* Center - Brand Logo */
 .header-logo-link {
-    flex: 1; 
+    flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -68,19 +78,21 @@
 }
 
 .header-logo {
-    height: 56px; /* Base height for standard view */
+    height: 110px;
+    /* Upscaled for a more prominent luxury brand presence */
     width: auto;
     object-fit: contain;
     transition: height 0.4s ease;
 }
 
 .site-header.header-scrolled .header-logo {
-    height: 40px; /* Synchronized shrinkage with the padding dynamically */
+    height: 80px;
+    /* Perfectly balanced for the condensed 80px scrolled header */
 }
 
 /* Right - Utility Actions */
 .header-actions {
-    flex: 1; 
+    flex: 1;
     display: flex;
     justify-content: flex-end;
     align-items: center;
@@ -88,8 +100,10 @@
 }
 
 .header-search-btn {
-    background: transparent;
-    border: none;
+    background: transparent !important; /* Force override of global gold shimmer */
+    background-image: none !important;
+    border: none !important;
+    box-shadow: none !important;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -136,18 +150,24 @@
 /* Responsive Structural Breakdown */
 @media (max-width: 991px) {
     .header-nav-left {
-        display: none; /* Hide primary nav natively for mobile */
+        display: none;
+        /* Hide primary nav natively for mobile */
     }
+
     .header-container {
         justify-content: space-between;
     }
+
     .header-logo-link {
         flex: 0;
-        justify-content: flex-start; /* Push logo to the left on small screens */
+        justify-content: flex-start;
+        /* Push logo to the left on small screens */
     }
+
     .header-actions {
         flex: 0;
     }
+
     .header-book-btn {
         padding: 10px 20px;
         font-size: 12px;
@@ -158,9 +178,12 @@
     .site-header {
         padding: 20px 0;
     }
+
     .header-search-btn {
-        display: none; /* Strip back non-essentials on strict mobile */
+        display: none;
+        /* Strip back non-essentials on strict mobile */
     }
+
     .header-logo {
         height: 48px;
     }
