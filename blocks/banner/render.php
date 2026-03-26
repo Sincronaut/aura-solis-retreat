@@ -2,9 +2,9 @@
 if ( ! defined( 'ABSPATH' ) ) { exit; }
 
 $A           = is_array( $attributes ?? null ) ? $attributes : [];
-$title       = $A['title'] ?? 'Unplug in <em>Mindful Luxury</em>';
-$description = $A['description'] ?? 'A secluded sanctuary where untouched nature meets uncompromising comfort';
-$buttonText  = $A['buttonText'] ?? 'BOOK NOW';
+$title       = $A['title'] ?? '';
+$description = $A['description'] ?? '';
+$buttonText  = $A['buttonText'] ?? '';
 $buttonLink  = $A['buttonLink'] ?? '#';
 $imageUrl    = $A['imageUrl'] ?? '';
 $is_inner    = $A['isInner'] ?? false;
