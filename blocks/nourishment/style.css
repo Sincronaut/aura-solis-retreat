@@ -1,0 +1,70 @@
+/* =========================================
+   Nourishment Block - Styling
+   ========================================= */
+
+.nourishment-header {
+    margin-bottom: clamp(32px, 4vw, 56px);
+    max-width: 800px; /* Center text stack for readability */
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.nourishment-header h2 {
+    margin-bottom: 24px;
+    /* Font size and color inherited from global H2 rules */
+}
+
+.nourishment-header p {
+    color: #555555;
+    /* Font size and color inherited from global <p> rules */
+}
+
+/* 4-Image Grid Matrix */
+.nourishment-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: clamp(16px, 2vw, 24px);
+    width: 100%;
+}
+
+.nourishment-item {
+    aspect-ratio: 1 / 1; /* Forced square matrix as seen in mockup */
+    border-radius: 8px; /* Smooth professional rounding */
+    overflow: hidden; /* Protect the crop bounding boxes */
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08); /* Subtle premium elevation */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.nourishment-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+.nourishment-item__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+}
+
+/* =========================================
+   RESPONSIVE ENGINES
+   ========================================= */
+@media (max-width: 1200px) {
+    .nourishment-grid {
+        grid-template-columns: repeat(2, 1fr); /* Switch to 2x2 grid for tablet */
+    }
+}
+
+@media (max-width: 600px) {
+    .nourishment-grid {
+        grid-template-columns: 1fr; /* Switch to vertical stack for mobile depth */
+        max-width: 320px;
+        margin: 0 auto;
+    }
+    
+    .nourishment-header {
+        text-align: center;
+    }
+}

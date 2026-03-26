@@ -1,0 +1,34 @@
+{
+    "apiVersion": 2,
+    "name": "child/nourishment",
+    "title": "Nourishment",
+    "category": "design",
+    "description": "Centered title and description followed by a 4-image grid.",
+    "attributes": {
+        "title": {
+            "type": "string",
+            "default": "Nourishment for the Senses"
+        },
+        "description": {
+            "type": "string",
+            "default": "At Aura Solis, savor the earth's bounty. Enjoy organic, local flavors designed to harmonize with the mountains."
+        },
+        "images": {
+            "type": "array",
+            "default": [
+                { "url": "/assets/images/nourishment/1.webp", "alt": "Nourishment 1" },
+                { "url": "/assets/images/nourishment/2.webp", "alt": "Nourishment 2" },
+                { "url": "/assets/images/nourishment/3.webp", "alt": "Nourishment 3" },
+                { "url": "/assets/images/nourishment/4.webp", "alt": "Nourishment 4" }
+            ]
+        }
+    },
+    "supports": {
+        "html": false
+    },
+    "textdomain": "child-aura-solis-retreat",
+    "editorScript": "file:./index.js",
+    "editorStyle": "file:./index.css",
+    "style": "file:./style.css",
+    "render": "file:./render.php"
+}
