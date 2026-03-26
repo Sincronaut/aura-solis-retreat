@@ -1,0 +1,56 @@
+{
+  "apiVersion": 3,
+  "name": "child/features-2",
+  "title": "Aura Solis Features 2",
+  "category": "design",
+  "icon": "feedback",
+  "description": "Inner page feature grid boasting a horizontal timeline separator and split columns.",
+  "supports": {
+    "html": false,
+    "align": false
+  },
+  "style": "file:./style.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "mainTitle": {
+      "type": "string",
+      "default": "Luxury in Every Breath"
+    },
+    "feature1_title": {
+      "type": "string",
+      "default": "Infinite Privacy"
+    },
+    "feature1_desc": {
+      "type": "string",
+      "default": "With 50 acres of untouched shoreline at your doorstep, your personal space is measured in horizons, not square footage."
+    },
+    "feature1_icon": {
+      "type": "string",
+      "default": "/assets/images/features-2/mountain.webp"
+    },
+    "feature2_title": {
+      "type": "string",
+      "default": "Bespoke Artistry"
+    },
+    "feature2_desc": {
+      "type": "string",
+      "default": "From forest-to-table dining to meditative shoreline rituals, we craft moments that resonate long after the sun sets behind the peaks."
+    },
+    "feature2_icon": {
+      "type": "string",
+      "default": "/assets/images/features-2/star.webp"
+    },
+    "feature3_title": {
+      "type": "string",
+      "default": "Guaranteed Serenity"
+    },
+    "feature3_desc": {
+      "type": "string",
+      "default": "Eliminate the noise of third-party bookings. Direct guests enjoy our most flexible cancellation policies and a dedicated concierge from moment one."
+    },
+    "feature3_icon": {
+      "type": "string",
+      "default": "/assets/images/features-2/shield.webp"
+    }
+  }
+}

@@ -7,6 +7,7 @@ $description = $A['description'] ?? 'A secluded sanctuary where untouched nature
 $buttonText  = $A['buttonText'] ?? 'BOOK NOW';
 $buttonLink  = $A['buttonLink'] ?? '#';
 $imageUrl    = $A['imageUrl'] ?? '';
+$is_inner    = $A['isInner'] ?? false;
 
 // Allowed HTML for the title so 'em', 'i', or 'span' tags survive.
 $allowed_html = array(
@@ -30,9 +31,14 @@ if ( ! empty( $imageUrl ) ) {
     // Generic fallback color if the user hasn't added the URL in attributes yet
     $bg_style = 'background-color: #1a1a1a;'; 
 }
+
+$section_classes = 'banner-block';
+if ( $is_inner ) {
+    $section_classes .= ' banner-block--inner';
+}
 ?>
 
-<section class="banner-block" style="<?php echo esc_attr( $bg_style ); ?>">
+<section class="<?php echo esc_attr( $section_classes ); ?>" style="<?php echo esc_attr( $bg_style ); ?>">
     <div class="banner-block__overlay"></div>
 
     <div class="banner-block__content">

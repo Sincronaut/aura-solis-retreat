@@ -14,6 +14,14 @@
     color: #ffffff; /* Override base content to be white over the banner background */
 }
 
+/* Modifier state for internal secondary pages (like About) */
+.banner-block--inner {
+    min-height: auto; /* Override the 100vh default */
+    height: 460px;
+    max-height: 460px;
+    background-position: top; /* Anchors the crop to the top of the image to preserve sky/peak details */
+}
+
 .banner-block__overlay {
     position: absolute;
     inset: 0;
@@ -40,12 +48,14 @@
 
 .banner-block__title {
     color: #ffffff;
-    max-width: 1000px; /* Wide target for title */
+    max-width: 100%; /* Removing restrictive caps so the single string has room */
     margin-bottom: 20px;
+    white-space: nowrap; /* Forces a continuous single line with no line breaks */
 }
 
 .banner-block__description {
     color: #ffffff;
-    max-width: 600px; /* Balanced narrow column for description readability */
+    max-width: 100%; /* Remove restrictive wrap constraints */
     margin-bottom: 40px;
+    white-space: nowrap; /* Forces a continuous single line */
 }
