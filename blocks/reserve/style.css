@@ -100,6 +100,7 @@
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    box-sizing: border-box;
 }
 
 .btn-outline {
@@ -114,6 +115,7 @@
     text-decoration: none;
     text-transform: uppercase;
     padding: 1rem 2.25rem;
+    box-sizing: border-box; /* Crucial fix for width: 100% behavior */
     border-radius: 5px;
     border: 1.5px solid #0D1A25;
     background: transparent;
@@ -244,14 +246,52 @@
     }
 
     .reserve-price-badge {
-        bottom: -20px;
+        bottom: auto;
+        top: 20px;
         right: 20px;
+        /* Scaled down rosette for tablet/mobile */
+        width: 110px;
+        height: 110px;
+    }
+
+    .reserve-price-badge::before,
+    .reserve-price-badge::after {
+        border-radius: 20px;
+    }
+
+    .reserve-price-badge-inner-bg {
+        inset: 10px;
+    }
+
+    .reserve-price-badge-inner-bg::before,
+    .reserve-price-badge-inner-bg::after {
+        border-radius: 12px;
+    }
+
+    .reserve-price-starting {
+        font-size: 10px;
+    }
+    .reserve-price-val {
+        font-size: 22px;
+    }
+    .reserve-price-unit {
+        font-size: 10px;
+    }
+
+    /* Equalize button widths on tablet */
+    .reserve-actions .btn-gold,
+    .reserve-actions .btn-outline {
+        flex: 1;
+        min-width: 180px; /* Safety fallback for narrow tablets */
+        box-sizing: border-box;
     }
 }
 
 @media (max-width: 480px) {
     .reserve-amenities {
-        grid-template-columns: 1fr;
+        grid-template-columns: 1fr 1fr; /* 2 columns as requested */
+        gap: 16px 20px;
+        margin-bottom: 40px;
     }
 
     .reserve-actions {
@@ -261,5 +301,8 @@
     .btn-gold,
     .btn-outline {
         width: 100%;
+        padding-left: 1.5rem; /* Reduced padding for mobile tight boxes */
+        padding-right: 1.5rem;
+        box-sizing: border-box;
     }
 }
