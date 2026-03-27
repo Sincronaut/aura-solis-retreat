@@ -61,6 +61,14 @@
     font-size: 15px;
     font-weight: 400;
     transition: color 0.3s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-nav-left a:focus,
+.header-nav-left a:active {
+    outline: none;
+    box-shadow: none;
 }
 
 .header-nav-left a:hover {
@@ -104,6 +112,8 @@
     background-image: none !important;
     border: none !important;
     box-shadow: none !important;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
     cursor: pointer;
     padding: 0;
     display: flex;
@@ -111,6 +121,12 @@
     justify-content: center;
     color: #ffffff;
     transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.header-search-btn:focus,
+.header-search-btn:active {
+    outline: none;
+    box-shadow: none !important;
 }
 
 .header-search-btn:hover {
@@ -139,7 +155,15 @@
     background: linear-gradient(135deg, #DFBE76 0%, #A2843A 100%);
     color: #ffffff !important;
     border: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
     transition: opacity 0.3s ease;
+}
+
+.header-book-btn:focus,
+.header-book-btn:active {
+    outline: none;
+    box-shadow: none;
 }
 
 .header-book-btn:hover {
@@ -159,18 +183,14 @@
     }
 
     .header-logo-link {
-        flex: 0;
+        flex: 1;
         justify-content: flex-start;
         /* Push logo to the left on small screens */
     }
 
     .header-actions {
-        flex: 0;
-    }
-
-    .header-book-btn {
-        padding: 10px 20px;
-        font-size: 12px;
+        display: none;
+        /* Hide right actions on tablet/mobile, moving to drawer */
     }
 }
 
@@ -187,4 +207,216 @@
     .header-logo {
         height: 48px;
     }
+}
+
+/* =========================================
+   MOBILE MENU DRAWER logic
+   ========================================= */
+
+/* Hamburger Button */
+.header-hamburger {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    z-index: 10001;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    color: #ffffff;
+    transition: opacity 0.3s ease;
+}
+
+.header-hamburger:hover {
+    opacity: 0.7;
+}
+
+@media (max-width: 991px) {
+    .header-hamburger {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+/* Hide hamburger icon when menu is open */
+.menu-open .header-hamburger {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Overlay Base */
+.mobile-drawer-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.4s ease;
+}
+
+.menu-open .mobile-drawer-overlay {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+/* Panel Mechanics - leaves space on the left */
+.mobile-drawer {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: min(340px, 85vw); /* Never fully covers screen */
+    height: 100vh;
+    background-color: #0D1A25;
+    z-index: 10000;
+    display: flex;
+    flex-direction: column;
+    padding: 80px 32px 40px;
+    transform: translateX(100%);
+    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: -8px 0 32px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    box-sizing: border-box;
+}
+
+.menu-open .mobile-drawer {
+    transform: translateX(0);
+}
+
+/* Stop body scroll when menu is open */
+body.menu-open {
+    overflow: hidden;
+}
+
+/* Close Button */
+.mobile-drawer-close {
+    position: absolute;
+    top: 24px;
+    right: 24px;
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    color: #ffffff;
+    padding: 0;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.mobile-drawer-close:hover {
+    border-color: rgba(255, 255, 255, 0.4);
+    background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* Drawer Content: Nav Links */
+.mobile-drawer-nav {
+    flex-shrink: 0;
+}
+
+.mobile-drawer-nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+}
+
+.mobile-drawer-nav a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 17px;
+    font-weight: 400;
+    letter-spacing: 0.04em;
+    transition: color 0.3s ease;
+    display: inline-block;
+    padding: 4px 0;
+}
+
+.mobile-drawer-nav a:hover,
+.mobile-drawer-nav a:active {
+    color: #B59A5A;
+}
+
+/* Drawer Content: Action Utilities */
+.mobile-drawer-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    padding-top: 32px;
+    margin-top: 40px;
+}
+
+/* Search Field */
+.mobile-search-field {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 4px;
+    padding: 12px 16px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.mobile-search-field svg {
+    color: rgba(255, 255, 255, 0.4);
+    flex-shrink: 0;
+}
+
+.mobile-search-input {
+    flex: 1;
+    min-width: 0;
+    border: none;
+    background: transparent;
+    color: #ffffff;
+    font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
+    font-size: 14px;
+    outline: none;
+    padding: 0;
+}
+
+.mobile-search-input::placeholder {
+    color: rgba(255, 255, 255, 0.35);
+    letter-spacing: 0.04em;
+}
+
+/* Book Button — matches search field width */
+.mobile-book-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Lato', sans-serif;
+    font-weight: 700;
+    font-size: 13px;
+    letter-spacing: 0.1em;
+    text-decoration: none;
+    text-transform: uppercase;
+    padding: 14px 28px;
+    border-radius: 4px;
+    background: linear-gradient(135deg, #DFBE76 0%, #A2843A 100%);
+    color: #ffffff !important;
+    border: none;
+    outline: none;
+    text-align: center;
+    width: 100%;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+}
+
+.mobile-book-btn:hover {
+    opacity: 0.9;
 }
