@@ -120,6 +120,17 @@
     gap: 20px;
 }
 
+.footer-socials a {
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.footer-socials a:focus,
+.footer-socials a:active {
+    outline: none;
+    box-shadow: none;
+}
+
 .footer-socials a img {
     height: 24px;
     width: 24px;
@@ -155,6 +166,14 @@
     font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
     font-size: 15px;
     transition: color 0.3s ease;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.footer-links a:focus,
+.footer-links a:active {
+    outline: none;
+    box-shadow: none;
 }
 
 .footer-links a:hover {

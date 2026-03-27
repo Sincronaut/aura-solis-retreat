@@ -14,6 +14,29 @@
     transition: background-color 0.4s ease, min-height 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
 }
 
+/* Subtle top-to-transparent scrim — Ensures header content stays legible
+   over bright/complex hero images without making the header look solid */
+.site-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(
+        to bottom,
+        rgba(13, 26, 37, 0.55) 0%,
+        rgba(13, 26, 37, 0.2) 60%,
+        transparent 100%
+    );
+    pointer-events: none;
+    z-index: 0;
+    opacity: 1;
+    transition: opacity 0.4s ease;
+}
+
+/* Fade out the gradient scrim once the solid scrolled bg takes over */
+.site-header.header-scrolled::before {
+    opacity: 0;
+}
+
 /* Scroll Activated JavaScript State */
 .site-header.header-scrolled {
     background-color: rgba(13, 26, 37, 0.95);
@@ -27,14 +50,14 @@
 
 /* Flexbox Split Engine */
 .header-container {
+    position: relative;
+    z-index: 1; /* Sits above the ::before gradient scrim */
     max-width: var(--content-max);
     width: 100%;
-    /* Ensure it spans the header width */
     margin: 0 auto;
     padding: 0 var(--section-px);
     display: flex;
     justify-content: space-between;
-    /* Creates the strict 3-zone pillar layout */
     align-items: center;
 }
 
@@ -78,11 +101,19 @@
 
 /* Center - Brand Logo */
 .header-logo-link {
-    flex: 1;
+    flex: 0 0 auto; /* Only take the space the logo actually needs — no ghost clickable area */
     display: flex;
     justify-content: center;
     align-items: center;
     text-decoration: none;
+    outline: none;
+    -webkit-tap-highlight-color: transparent;
+}
+
+.header-logo-link:focus,
+.header-logo-link:active {
+    outline: none;
+    box-shadow: none;
 }
 
 .header-logo {
@@ -173,6 +204,10 @@
 
 /* Responsive Structural Breakdown */
 @media (max-width: 991px) {
+    .site-header {
+        min-height: 80px; /* Compact header height on tablet/mobile */
+    }
+
     .header-nav-left {
         display: none;
         /* Hide primary nav natively for mobile */
@@ -183,9 +218,14 @@
     }
 
     .header-logo-link {
-        flex: 1;
+        flex: 0 0 auto; /* Only take the space the logo actually needs */
+        width: auto;
         justify-content: flex-start;
-        /* Push logo to the left on small screens */
+    }
+
+    .header-logo {
+        height: 64px; /* Scaled down for tablet/mobile */
+        width: auto;
     }
 
     .header-actions {
@@ -196,7 +236,8 @@
 
 @media (max-width: 600px) {
     .site-header {
-        padding: 20px 0;
+        padding: 12px 0; /* Tighter vertical padding on phone */
+        min-height: 64px;
     }
 
     .header-search-btn {
@@ -205,7 +246,7 @@
     }
 
     .header-logo {
-        height: 48px;
+        height: 44px;
     }
 }
 
