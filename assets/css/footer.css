@@ -59,6 +59,7 @@
 
 .newsletter-input {
     flex: 1;
+    min-width: 0; /* Prevents flex children from overflowing */
     border: none;
     padding: 12px 20px;
     font-family: var(--wp--preset--font-family--lato), 'Lato', sans-serif;
@@ -67,6 +68,7 @@
     outline: none;
     color: #333333;
     background: transparent;
+    box-sizing: border-box;
 }
 
 .newsletter-input::placeholder {
@@ -231,24 +233,50 @@
         grid-column: span 3; /* Push brand info fully to the top line */
         padding-right: 0;
         margin-bottom: 24px;
+        text-align: center;
+    }
+    .footer-brand .footer-socials {
+        justify-content: center;
+    }
+    .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
     }
 }
 
 @media (max-width: 991px) {
     .footer-newsletter {
         flex-direction: column;
-        align-items: stretch;
+        align-items: center;
         gap: 24px;
+        text-align: center;
     }
     .newsletter-content {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 8px;
     }
     .newsletter-form {
         max-width: 100%;
     }
-    
+
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .footer-brand {
+        grid-column: span 2;
+    }
+    .footer-links {
+        text-align: center;
+    }
+    .footer-links ul {
+        align-items: center;
+    }
+    .footer-contact ul li {
+        justify-content: center;
+    }
+
     .footer-bottom-layout {
         flex-direction: column;
         gap: 16px;
@@ -263,23 +291,48 @@
     .footer-grid {
         grid-template-columns: 1fr; /* Stack totally vertically */
         gap: 40px;
+        text-align: center;
     }
     .footer-brand {
         grid-column: span 1;
+        text-align: center;
     }
-    
+    .footer-brand .footer-logo {
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+    }
+    .footer-brand .footer-socials {
+        justify-content: center;
+    }
+    .footer-links ul {
+        align-items: center;
+    }
+    .footer-contact ul li {
+        justify-content: center;
+    }
+
+    .newsletter-content {
+        align-items: center;
+        text-align: center;
+    }
+
     .newsletter-form {
         flex-direction: column;
         background: transparent;
         padding: 0;
         gap: 12px;
+        align-items: stretch; /* Force both children to the same width */
     }
     .newsletter-input {
         width: 100%;
+        box-sizing: border-box;
         background: #ffffff;
         border-radius: 4px;
+        text-align: center;
     }
     .newsletter-btn {
         width: 100%;
+        box-sizing: border-box;
     }
 }
