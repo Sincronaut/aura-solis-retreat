@@ -20,7 +20,7 @@ if ( ! empty( $newsletterBg ) && strpos( $newsletterBg, '/assets' ) === 0 ) {
         <div class="contact-split">
             
             <!-- Left: Inquiry Form -->
-            <div class="contact-inquiry">
+            <div class="contact-inquiry" data-animate="fade-left">
                 <?php if ( ! empty( $formTitle ) ) : ?>
                     <h2 class="contact-title"><?php echo esc_html( $formTitle ); ?></h2>
                 <?php endif; ?>
@@ -56,7 +56,7 @@ if ( ! empty( $newsletterBg ) && strpos( $newsletterBg, '/assets' ) === 0 ) {
             </div>
 
             <!-- Right: Newsletter Box -->
-            <div class="contact-newsletter" style="background-image: url('<?php echo esc_url( $newsletterBg ); ?>');">
+            <div class="contact-newsletter" data-animate="fade-right" style="background-image: url('<?php echo esc_url( $newsletterBg ); ?>');">
                 <div class="newsletter-overlay"></div>
                 <div class="newsletter-content">
                     <?php if ( ! empty( $newsletterTitle ) ) : ?>

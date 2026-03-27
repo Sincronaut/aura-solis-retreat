@@ -34,7 +34,7 @@ unset($item);
 
 <section class="section-global features-block" style="background-color: <?php echo esc_attr( $backgroundColor ); ?>;">
     <div class="container-global">
-        <div class="features-grid">
+        <div class="features-grid" data-animate-stagger>
             <?php foreach ( $items as $index => $item ) : ?>
                 <div class="feature-item">
                     <div class="feature-item__inner">

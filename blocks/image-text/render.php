@@ -39,7 +39,7 @@ if ( $imagePosition === 'right' ) {
         <div class="<?php echo esc_attr( $layout_class ); ?>">
             
             <!-- Left (or Right reversed): Hero Imagery -->
-            <div class="image-text__media">
+            <div class="image-text__media" data-animate="fade-left">
                 <?php if ( ! empty( $mainImage ) ) : ?>
                     <img src="<?php echo esc_url( $mainImage ); ?>" 
                          alt="<?php echo esc_attr( $title ); ?>" 
@@ -49,7 +49,7 @@ if ( $imagePosition === 'right' ) {
             </div>
 
             <!-- Right (or Left reversed): Semantic Content Column -->
-            <div class="image-text__content">
+            <div class="image-text__content" data-animate="fade-right">
                 <?php if ( ! empty( $badge ) ) : ?>
                     <span class="image-text__badge"><?php echo esc_html( $badge ); ?></span>
                 <?php endif; ?>

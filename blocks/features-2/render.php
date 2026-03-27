@@ -39,12 +39,12 @@ $f3_i = $A['feature3_icon'] ?? '/assets/images/features-2/shield.webp';
         <div class="features-2-grid">
             
             <!-- Left Side Title Column -->
-            <div class="f2-left">
+            <div class="f2-left" data-animate="fade-left">
                 <h2 class="wp-block-heading heading-serif"><?php echo esc_html( $mainTitle ); ?></h2>
             </div>
             
             <!-- Right Side Features Display matrix -->
-            <div class="f2-right">
+            <div class="f2-right" data-animate-stagger>
                 
                 <!-- Top Row (Contains icons side-by-side with text) -->
                 <div class="f2-row f2-row--top">

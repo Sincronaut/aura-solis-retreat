@@ -24,7 +24,7 @@ if ( ! function_exists( 'child_nourish_img_url' ) ) {
 
 <section class="nourishment-block section-global section-py bg-cream">
     <div class="container-global">
-        <header class="nourishment-header section-title-center">
+        <header class="nourishment-header section-title-center" data-animate="fade-up">
             <?php if ( ! empty( $title ) ) : ?>
                 <h2 class="nourishment-title"><?php echo esc_html( $title ); ?></h2>
             <?php endif; ?>
@@ -34,7 +34,7 @@ if ( ! function_exists( 'child_nourish_img_url' ) ) {
             <?php endif; ?>
         </header>
 
-        <div class="nourishment-grid">
+        <div class="nourishment-grid" data-animate-stagger>
             <?php foreach ( $images as $img ) : ?>
                 <div class="nourishment-item">
                     <img src="<?php echo esc_url( child_nourish_img_url( $img['url'] ?? '' ) ); ?>" 

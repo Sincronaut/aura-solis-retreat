@@ -20,7 +20,7 @@ unset( $item );
     <div class="container-global">
         
         <!-- Header Stack: Badge & Title -->
-        <div class="experience-header">
+        <div class="experience-header" data-animate="fade-up">
             <?php if ( ! empty( $badge ) ) : ?>
                 <span class="experience-badge"><?php echo esc_html( $badge ); ?></span>
             <?php endif; ?>
@@ -32,7 +32,7 @@ unset( $item );
 
         <!-- Dynamic Loop over Features Array -->
         <?php if ( ! empty( $items ) ) : ?>
-            <div class="experience-grid">
+            <div class="experience-grid" data-animate-stagger>
                 <?php foreach ( $items as $item ) : ?>
                     <div class="experience-item">
                         <!-- Feature Icon Base -->

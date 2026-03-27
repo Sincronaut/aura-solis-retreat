@@ -21,11 +21,11 @@ $wrapper_class = $isCarousel ? 'cards-carousel-wrapper is-carousel' : 'cards-car
 <section class="section-global cards-section">
     <div class="container-global">
         <?php if ( ! empty( $sectionTitle ) ) : ?>
-            <h2 class="cards-section__main-title section-title-center"><?php echo esc_html( $sectionTitle ); ?></h2>
+            <h2 class="cards-section__main-title section-title-center" data-animate="fade-up"><?php echo esc_html( $sectionTitle ); ?></h2>
         <?php endif; ?>
 
         <div class="<?php echo esc_attr( $wrapper_class ); ?>" id="cards-carousel-root">
-            <div class="cards-track" id="cards-track">
+            <div class="cards-track" id="cards-track" data-animate-stagger>
                 <?php foreach ( $items as $item ) : ?>
                     <div class="card-item">
                         <div class="card-item__media">
