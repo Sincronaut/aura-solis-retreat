@@ -4,14 +4,16 @@
     width: 100%;
     min-height: 100vh;
     display: flex;
-    align-items: center;
-    justify-content: center;
+    flex-direction: column; /* Force column-based centering engine */
+    align-items: center; /* Horizontally centers children */
+    justify-content: center; /* Vertically centers children */
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    text-align: center;
     padding: 2rem 1rem;
-    color: #ffffff; /* Override base content to be white over the banner background */
+    color: #ffffff;
+    box-sizing: border-box;
+    overflow: hidden;
 }
 
 /* Modifier state for internal secondary pages (like About) */
@@ -33,11 +35,14 @@
 .banner-block__content {
     position: relative;
     z-index: 2;
-    max-width: 1100px; /* Increased to accommodate the large 64px font with spacing */
+    max-width: 1100px;
     width: 100%;
+    margin: 0; /* Centered by parent's flex engine */
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: center;
+    text-align: center;
 }
 
 /* Specific banner branding for italics */
@@ -48,14 +53,63 @@
 
 .banner-block__title {
     color: #ffffff;
-    max-width: 100%; /* Removing restrictive caps so the single string has room */
-    margin-bottom: 20px;
-    white-space: nowrap; /* Forces a continuous single line with no line breaks */
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto 20px auto; /* Explicit horizontal centering margin */
+    /* Removed white-space: nowrap to allow natural wrapping on mobile */
+    overflow-wrap: break-word;
+    text-align: center;
 }
 
 .banner-block__description {
     color: #ffffff;
-    max-width: 100%; /* Remove restrictive wrap constraints */
-    margin-bottom: 40px;
-    white-space: nowrap; /* Forces a continuous single line */
+    width: 100%;
+    max-width: 800px; /* Constrain description width for better readability */
+    margin: 0 auto 40px auto; /* Explicit horizontal centering margin */
+    /* Removed white-space: nowrap to allow natural wrapping on mobile */
+    overflow-wrap: break-word;
+    text-align: center;
+}
+
+/* =========================================
+   RESPONSIVE: Banner Block
+   ========================================= */
+@media (max-width: 768px) {
+    .banner-block {
+        padding: 4rem 1.5rem;
+    }
+
+    .banner-block--inner {
+        height: auto;
+        min-height: 400px;
+        max-height: none;
+    }
+
+    .banner-block__title {
+        font-size: clamp(32px, 8vw, 48px) !important;
+        margin-bottom: 15px;
+    }
+
+    .banner-block__description {
+        font-size: 15px;
+        margin-bottom: 30px;
+        line-height: 1.5;
+    }
+
+    .banner-block__content .btn-gold {
+        padding: 0.875rem 1.75rem;
+        font-size: 15px;
+        width: auto; /* Ensure button doesn't stretch to full width unless desired */
+        display: inline-flex;
+    }
+}
+
+@media (max-width: 480px) {
+    .banner-block__title {
+        font-size: 28px !important;
+    }
+
+    .banner-block__description {
+        font-size: 14px;
+    }
 }
