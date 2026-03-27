@@ -159,8 +159,9 @@
         padding-top: 40px;
     }
 
-    .f2-divider--vertical {
-        display: none; /* Collapse vertical divider when stacked vertically */
+    .f2-divider--vertical,
+    .f2-divider--horizontal {
+        display: none; /* Collapse all dividers when stacked vertically on mobile */
     }
     
     .f2-item--centered {

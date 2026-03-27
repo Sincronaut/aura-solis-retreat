@@ -84,8 +84,9 @@
 
 /* Mobile Responsive Adjustments */
 @media (max-width: 991px) {
-    .features-v-divider {
-        display: none; /* remove vertical lines when columns wrap */
+    .features-v-divider,
+    .features-h-divider {
+        display: none; /* remove all divider lines when columns wrap */
     }
     .feature-item {
         flex: 0 0 100%;
