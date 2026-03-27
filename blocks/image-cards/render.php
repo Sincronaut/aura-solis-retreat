@@ -21,16 +21,23 @@ if ( ! function_exists( 'child_img_cards_url' ) ) {
 ?>
 
 <section class="image-cards-block section-global section-py-lg bg-cream">
-    <div class="image-cards-container container-global">
+    <div class="image-cards-container">
         <!-- Scroll-wrapper strictly protects padding dropshadow logic from breaking edge bounds -->
         <div class="image-cards-wrapper">
-            <?php foreach ( $images as $img ) : ?>
+            <?php 
+            // Render the items twice for the infinite CSS ticker loop
+            for ( $i = 0; $i < 2; $i++ ) : 
+                foreach ( $images as $img ) : 
+            ?>
                 <div class="image-card">
                     <img src="<?php echo esc_url( child_img_cards_url( $img['url'] ?? '' ) ); ?>" 
                          alt="<?php echo esc_attr( $img['alt'] ?? 'Gallery Image' ); ?>" 
                          class="image-card__img">
                 </div>
-            <?php endforeach; ?>
+            <?php 
+                endforeach;
+            endfor; 
+            ?>
         </div>
     </div>
 </section>

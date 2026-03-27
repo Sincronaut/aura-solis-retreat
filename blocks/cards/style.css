@@ -1,7 +1,4 @@
-.cards-section {
-    /* Background removed to inherit from global-section */
-}
-
+/* Cards Block Styles */
 .cards-section__main-title {
     text-align: center;
     margin-bottom: calc(var(--section-py) * 0.5);
@@ -180,29 +177,38 @@
     border: none;
     background-color: #000000;
     opacity: 0.3;
-    /* Unselected is dimmed */
     padding: 0;
     cursor: pointer;
     transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
+/* Responsive Dot Grouping: Hide extra indicators on desktop to keep UI clean */
+@media (min-width: 992px) {
+    .carousel-dots .dot:not(:nth-child(3n+1)) {
+        display: none;
+    }
+}
+
 .carousel-dots .dot.active {
     opacity: 1;
-    background-color: #000000;
+    background-color: #1a1a1a;
     width: 14px;
     height: 14px;
-    /* Active dot is larger */
 }
 
-/* STATIC MODE OVERRIDES */
-.is-static .cards-track {
-    overflow: visible;
-    scroll-snap-type: none;
-}
+/* STATIC MODE OVERRIDES (Desktop Only) */
+@media (min-width: 992px) {
+    .is-static .cards-track {
+        overflow: visible;
+        scroll-snap-type: none;
+        flex-wrap: wrap; /* Allow wrapping on desktop if static */
+        justify-content: center;
+    }
 
-.is-static .carousel-nav,
-.is-static .carousel-dots {
-    display: none;
+    .is-static .carousel-nav,
+    .is-static .carousel-dots {
+        display: none;
+    }
 }
 
 /* RESPONSIVE */
@@ -223,14 +229,27 @@
 }
 
 @media (max-width: 991px) {
+    /* Force carousel behavior on mobile/tablet even if set to static */
+    .cards-track {
+        overflow-x: auto !important;
+        scroll-snap-type: x mandatory !important;
+        display: flex !important;
+        flex-wrap: nowrap !important;
+        padding-bottom: 20px;
+    }
+
+    .carousel-dots {
+        display: flex !important; /* Force dots visible for mobile status indicators */
+    }
+
     .card-item {
         flex: 0 0 80%;
-        /* peak the next card */
+        scroll-snap-align: center; /* Better centering on mobile */
     }
 }
 
 @media (max-width: 480px) {
     .card-item {
-        flex: 0 0 92%;
+        flex: 0 0 calc(100% - 40px); /* Fill most of the screen on small phones */
     }
 }

@@ -1,53 +1,63 @@
-/**
- * Aura Solis Cards Carousel Logic
- * Sliding group manager with dynamic arrow visibility
- */
 document.addEventListener('DOMContentLoaded', function() {
     const track = document.getElementById('cards-track');
     const prevBtn = document.getElementById('carousel-prev');
     const nextBtn = document.getElementById('carousel-next');
     const dots    = document.querySelectorAll('.carousel-dots .dot');
 
-    if (!track || !prevBtn || !nextBtn) return;
+    if (!track) return;
 
     // Helper to calculate widths
-    const getSlideWidth = () => {
+    const getItemWidth = () => {
         const item = track.querySelector('.card-item');
         if (!item) return 0;
         const style = window.getComputedStyle(track);
         const gap = parseInt(style.getPropertyValue('gap')) || 0;
-        // Desktop: slide 3 cards at once
-        return (item.offsetWidth * 3) + (gap * 3);
+        return item.offsetWidth + gap;
+    };
+
+    const getJumpWidth = () => {
+        const itemWidth = getItemWidth();
+        // Desktop: slide 3 cards if possible, otherwise slide 1
+        const itemsPerView = window.innerWidth >= 992 ? 3 : 1;
+        return itemWidth * itemsPerView;
     };
 
     // Update Visibility of Arrows
     const updateArrows = () => {
+        if (!prevBtn || !nextBtn) return;
         const scrollLeft = track.scrollLeft;
         const maxScroll  = track.scrollWidth - track.clientWidth;
 
-        // Hide prev if we are at the start
         prevBtn.style.visibility = (scrollLeft <= 10) ? 'hidden' : 'visible';
         prevBtn.style.opacity    = (scrollLeft <= 10) ? '0' : '1';
 
-        // Hide next if we are at the end
         nextBtn.style.visibility = (scrollLeft >= maxScroll - 10) ? 'hidden' : 'visible';
         nextBtn.style.opacity    = (scrollLeft >= maxScroll - 10) ? '0' : '1';
     };
 
     // SCROLLING LOGIC
-    nextBtn.addEventListener('click', () => {
-        track.scrollBy({ left: getSlideWidth(), behavior: 'smooth' });
-    });
+    if (nextBtn) {
+        nextBtn.addEventListener('click', () => {
+            track.scrollBy({ left: getJumpWidth(), behavior: 'smooth' });
+        });
+    }
 
-    prevBtn.addEventListener('click', () => {
-        track.scrollBy({ left: -getSlideWidth(), behavior: 'smooth' });
-    });
+    if (prevBtn) {
+        prevBtn.addEventListener('click', () => {
+            track.scrollBy({ left: -getJumpWidth(), behavior: 'smooth' });
+        });
+    }
 
     // SCROLL LISTENER (Dots + Arrows)
     track.addEventListener('scroll', () => {
         const scrollPosition = track.scrollLeft;
-        const width = track.offsetWidth;
-        const index = Math.round(scrollPosition / width);
+        const itemWidth = getItemWidth();
+        let index = Math.round(scrollPosition / itemWidth);
+
+        // Normalize index for desktop to highlight grouped dots correctly
+        if (window.innerWidth >= 992) {
+            index = Math.floor(index / 3) * 3;
+        }
 
         // Update Dots
         dots.forEach((dot, idx) => {
@@ -64,7 +74,8 @@ document.addEventListener('DOMContentLoaded', function() {
     // DOTS INTERACTION
     dots.forEach((dot, index) => {
         dot.addEventListener('click', () => {
-            const scrollAmount = index * track.offsetWidth;
+            const itemWidth = getItemWidth();
+            const scrollAmount = index * itemWidth;
             track.scrollTo({ left: scrollAmount, behavior: 'smooth' });
         });
     });

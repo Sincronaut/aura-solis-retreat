@@ -62,16 +62,14 @@ $wrapper_class = $isCarousel ? 'cards-carousel-wrapper is-carousel' : 'cards-car
                         <polyline points="9 18 15 12 9 6"></polyline>
                     </svg>
                 </button>
-                
-                <div class="carousel-dots" id="carousel-dots">
-                   <?php 
-                   // calculate dots based on groups of 3
-                   $dot_count = ceil( count($items) / 3 );
-                   for($i=0; $i<$dot_count; $i++) : ?>
-                        <button class="dot <?php echo $i===0 ? 'active' : ''; ?>" data-index="<?php echo $i; ?>"></button>
-                   <?php endfor; ?>
-                </div>
             <?php endif; ?>
+
+            <!-- Dots are rendered regardless of desktop static mode for mobile carousel support -->
+            <div class="carousel-dots" id="carousel-dots" data-is-carousel="<?php echo $isCarousel ? 'true' : 'false'; ?>">
+                <?php foreach ( $items as $i => $item ) : ?>
+                    <button class="dot <?php echo $i===0 ? 'active' : ''; ?>" data-index="<?php echo $i; ?>"></button>
+                <?php endforeach; ?>
+            </div>
         </div>
     </div>
 </section>
