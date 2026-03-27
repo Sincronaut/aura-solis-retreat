@@ -1,0 +1,95 @@
+/* =========================================
+   Aura Solis — Global Scroll Animation System
+   Usage: Add data-animate="[type]" to any element.
+   Optional: data-animate-delay="100" (ms delay)
+             data-animate-duration="800" (ms duration)
+   JS (scroll-animations.js) watches via IntersectionObserver
+   and adds .is-visible once the element enters the viewport.
+   ========================================= */
+
+/* ── Base: All animatable elements start invisible ──────────────── */
+[data-animate] {
+    opacity: 0;
+    will-change: opacity, transform;
+    transition-property: opacity, transform;
+    transition-timing-function: cubic-bezier(0.22, 1, 0.36, 1); /* Expo-out: snappy premium feel */
+    transition-duration: 800ms;
+    transition-delay: 0ms;
+}
+
+/* Respect user's motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    [data-animate] {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+    }
+}
+
+/* ── Hidden States (before .is-visible is applied) ──────────────── */
+
+/* Generic fade — no movement, just opacity */
+[data-animate="fade"] {
+    opacity: 0;
+}
+
+/* Rise gently upward (most versatile — good for headings, paragraphs, sections) */
+[data-animate="fade-up"] {
+    opacity: 0;
+    transform: translateY(40px);
+}
+
+/* Drift in from the left (content pane in split layouts) */
+[data-animate="fade-left"] {
+    opacity: 0;
+    transform: translateX(-48px);
+}
+
+/* Drift in from the right (image pane in split layouts) */
+[data-animate="fade-right"] {
+    opacity: 0;
+    transform: translateX(48px);
+}
+
+/* Subtle scale bloom — great for cards, images, badges */
+[data-animate="zoom-in"] {
+    opacity: 0;
+    transform: scale(0.94);
+}
+
+/* Drop from above — good for headers, hero subtitles */
+[data-animate="fade-down"] {
+    opacity: 0;
+    transform: translateY(-32px);
+}
+
+/* ── Visible State (added by JS IntersectionObserver) ────────────── */
+[data-animate].is-visible {
+    opacity: 1;
+    transform: none;
+}
+
+/* ── Stagger Utility (for lists of children)
+   Add data-animate-stagger to a parent container.
+   Each direct child will inherit an incremental delay. ── */
+[data-animate-stagger] > * {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 700ms cubic-bezier(0.22, 1, 0.36, 1),
+                transform 700ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+[data-animate-stagger].is-visible > * {
+    opacity: 1;
+    transform: none;
+}
+
+/* Auto-stagger delays: up to 8 children, 100ms apart */
+[data-animate-stagger].is-visible > *:nth-child(1) { transition-delay: 0ms;   }
+[data-animate-stagger].is-visible > *:nth-child(2) { transition-delay: 100ms; }
+[data-animate-stagger].is-visible > *:nth-child(3) { transition-delay: 200ms; }
+[data-animate-stagger].is-visible > *:nth-child(4) { transition-delay: 300ms; }
+[data-animate-stagger].is-visible > *:nth-child(5) { transition-delay: 400ms; }
+[data-animate-stagger].is-visible > *:nth-child(6) { transition-delay: 500ms; }
+[data-animate-stagger].is-visible > *:nth-child(7) { transition-delay: 600ms; }
+[data-animate-stagger].is-visible > *:nth-child(8) { transition-delay: 700ms; }

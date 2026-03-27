@@ -37,7 +37,7 @@ if ( $watermarkFlipH ) {
         <div class="ethos-split">
             
             <!-- Left Grid: Dual Staggered Images -->
-            <div class="ethos-media">
+            <div class="ethos-media" data-animate="fade-left">
                 <div class="ethos-media__col left-img">
                    <?php if ( ! empty( $A['img1'] ) ) : ?>
                        <img src="<?php echo esc_url( $A['img1'] ); ?>" alt="Aura Solis Interior 1" loading="lazy">
@@ -51,7 +51,7 @@ if ( $watermarkFlipH ) {
             </div>
 
             <!-- Right Flex: Text Content -->
-            <div class="ethos-content">
+            <div class="ethos-content" data-animate="fade-right">
                 <?php if ( ! empty( $A['badgeText'] ) ) : ?>
                     <span class="ethos-badge"><?php echo esc_html( $A['badgeText'] ); ?></span>
                 <?php endif; ?>
@@ -78,7 +78,7 @@ if ( $watermarkFlipH ) {
         </div>
 
         <!-- Trust Features (Bottom 3 Columns) -->
-        <div class="ethos-features">
+        <div class="ethos-features" data-animate-stagger>
             <?php for ( $i = 1; $i <= 3; $i++ ) : 
                 $f_icon  = $A['feature'.$i.'_icon'] ?? '';
                 $f_title = $A['feature'.$i.'_title'] ?? '';

@@ -43,19 +43,19 @@ if ( $is_inner ) {
 
     <div class="banner-block__content">
         <?php if ( ! empty( $title ) ) : ?>
-            <h1 class="wp-block-heading has-h-1-font-size banner-block__title">
+            <h1 class="wp-block-heading has-h-1-font-size banner-block__title" data-animate="fade-down">
                 <?php echo wp_kses( $title, $allowed_html ); ?>
             </h1>
         <?php endif; ?>
         
         <?php if ( ! empty( $description ) ) : ?>
-            <p class="banner-block__description">
+            <p class="banner-block__description" data-animate="fade-up" data-animate-delay="150">
                 <?php echo wp_kses_post( $description ); ?>
             </p>
         <?php endif; ?>
 
         <?php if ( ! empty( $buttonText ) ) : ?>
-            <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn-gold">
+            <a href="<?php echo esc_url( $buttonLink ); ?>" class="btn-gold" data-animate="zoom-in" data-animate-delay="300">
                 <?php echo esc_html( $buttonText ); ?>
             </a>
         <?php endif; ?>

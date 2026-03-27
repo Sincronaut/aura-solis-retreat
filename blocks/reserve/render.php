@@ -34,7 +34,7 @@ $detailsBtnLink = $A['detailsBtnLink'] ?? '#';
 <section class="section-global reserve-section">
     <div class="container-global">
         <!-- Top Badge & Section Title -->
-        <div class="reserve-header">
+        <div class="reserve-header" data-animate="fade-up">
             <?php if ( ! empty( $badgeText ) ) : ?>
                 <span class="reserve-badge-top"><?php echo esc_html( $badgeText ); ?></span>
             <?php endif; ?>
@@ -46,7 +46,7 @@ $detailsBtnLink = $A['detailsBtnLink'] ?? '#';
         <!-- Main Card Container -->
         <div class="reserve-card">
             <!-- Left Side: Information -->
-            <div class="reserve-card__info">
+            <div class="reserve-card__info" data-animate="fade-left">
                 <h3 class="reserve-room-title"><?php echo esc_html( $roomTitle ); ?></h3>
                 <p class="reserve-room-desc"><?php echo esc_html( $roomDesc ); ?></p>
 
@@ -70,7 +70,7 @@ $detailsBtnLink = $A['detailsBtnLink'] ?? '#';
             </div>
 
             <!-- Right Side: Image with CSS Badge -->
-            <div class="reserve-card__media">
+            <div class="reserve-card__media" data-animate="fade-right">
                 <?php if ( ! empty( $mainImage ) ) : ?>
                     <img src="<?php echo esc_url( $mainImage ); ?>" alt="<?php echo esc_attr( $roomTitle ); ?>" class="reserve-main-img" loading="lazy">
                 <?php endif; ?>

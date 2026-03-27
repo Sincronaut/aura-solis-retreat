@@ -56,6 +56,27 @@ function aura_solis_enqueue_child_styles() {
         [],
         $footer_ver
     );
+
+    // Enqueue Global Scroll Animation CSS
+    $anim_style_path = $theme_dir . '/assets/css/animations.css';
+    $anim_ver = file_exists( $anim_style_path ) ? filemtime( $anim_style_path ) : '1.0.0';
+    wp_enqueue_style(
+        'aura-solis-animations',
+        $theme_uri . '/assets/css/animations.css',
+        [],
+        $anim_ver
+    );
+
+    // Enqueue Global Scroll Animation JS (deferred, no jQuery dependency)
+    $anim_js_path = $theme_dir . '/assets/js/scroll-animations.js';
+    $anim_js_ver  = file_exists( $anim_js_path ) ? filemtime( $anim_js_path ) : '1.0.0';
+    wp_enqueue_script(
+        'aura-solis-scroll-animations',
+        $theme_uri . '/assets/js/scroll-animations.js',
+        [],
+        $anim_js_ver,
+        true // Load in footer for better performance
+    );
 }
 add_action( 'wp_enqueue_scripts', 'aura_solis_enqueue_child_styles' );
 
