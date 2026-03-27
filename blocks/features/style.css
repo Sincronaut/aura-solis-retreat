@@ -88,12 +88,52 @@
     .features-h-divider {
         display: none; /* remove all divider lines when columns wrap */
     }
+
+    /* Switch to grid so we can use the smart lone-card centering trick */
+    .features-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 0;
+        flex-wrap: unset;
+    }
+
     .feature-item {
-        flex: 0 0 100%;
-        padding: 40px 0;
+        flex: unset;
+        min-width: unset;
+        padding: 40px 20px;
         text-align: center;
     }
+
+    .feature-item__header {
+        flex-direction: column;
+        align-items: center;
+    }
+
     .feature-item__icon-wrapper {
         justify-content: center;
     }
+
+    /*
+     * Smart auto-centering: span the lone last item across both columns,
+     * constrain to the same width as a normal 2-col cell, and center it.
+     */
+    .feature-item:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: 40%; /* Narrower than 50% so it looks clearly centered, not stretched */
+        margin: 0 auto;
+    }
 }
+
+@media (max-width: 600px) {
+    .features-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Reset centering override — single column, all items full-width */
+    .feature-item:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 100%;
+        margin: 0;
+    }
+}
+
