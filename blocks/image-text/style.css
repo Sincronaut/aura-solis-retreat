@@ -112,6 +112,17 @@
     .image-text__media {
         width: 100%; /* Collapse out of the 50/50 restriction */
     }
+
+    .image-text__content {
+        align-items: center;
+        text-align: center;
+    }
+
+    .image-text__contact-list {
+        justify-content: center;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 @media (max-width: 600px) {

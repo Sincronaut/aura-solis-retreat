@@ -95,6 +95,12 @@
     }
     
     .experience-item {
-        align-items: flex-start; /* Maintain strict structural left-alignment for quick scanning */
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .experience-item__content {
+        align-items: center;
     }
 }
