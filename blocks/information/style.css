@@ -113,13 +113,36 @@
    RESPONSIVE LAYOUTS
    ========================================= */
 @media (max-width: 1024px) {
+    /* Hide flower watermark on tablet/mobile */
+    .information-watermark {
+        display: none;
+    }
+
     .information-grid {
         grid-template-columns: 1fr 1fr;
+    }
+
+    /*
+     * Smart auto-centering: if the last card is alone on a row
+     * (i.e. total cards is odd), span it across both columns
+     * and constrain + center it so it doesn't stretch edge-to-edge.
+     */
+    .information-card:last-child:nth-child(odd) {
+        grid-column: 1 / -1;
+        max-width: calc(50% - 16px); /* Match the width of a normal 2-col card */
+        margin: 0 auto;
     }
 }
 
 @media (max-width: 768px) {
     .information-grid {
         grid-template-columns: 1fr;
+    }
+
+    /* Reset the centering override since we're back to 1 column */
+    .information-card:last-child:nth-child(odd) {
+        grid-column: auto;
+        max-width: 100%;
+        margin: 0;
     }
 }

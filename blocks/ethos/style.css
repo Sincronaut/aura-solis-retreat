@@ -244,6 +244,22 @@
     .ethos-feature-item__text {
         text-align: center;
     }
+    /* Reversed variant (About page): content on top, images below on mobile */
+    .ethos-section--reversed .ethos-split {
+        flex-direction: column; /* Override the row-reverse for mobile stacking */
+    }
+
+    .ethos-section--reversed .ethos-content {
+        order: 1; /* Content first on mobile */
+        flex: 1;
+        max-width: 100%;
+    }
+
+    .ethos-section--reversed .ethos-media {
+        order: 2; /* Images below content on mobile */
+        flex: 1;
+        width: 100%;
+    }
 }
 
 @media (max-width: 480px) {
