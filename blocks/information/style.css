@@ -1,0 +1,125 @@
+/* =========================================
+   Information Block - Styling
+   ========================================= */
+
+.information-block {
+    position: relative;
+    overflow: hidden; /* Secures huge watermark bounds */
+}
+
+/* Master Centered Header */
+.information-header {
+    text-align: center;
+    max-width: 800px;
+    margin: 0 auto clamp(40px, 6vw, 64px) auto;
+}
+
+/* 3-Card Grid Matrix */
+.information-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+    margin-bottom: clamp(60px, 10vw, 80px);
+    position: relative;
+    z-index: 10;
+}
+
+.information-card {
+    padding: 40px 32px;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); /* Very subtle premium lift */
+    transition: transform 0.4s ease, box-shadow 0.4s ease;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.information-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 45px rgba(0, 0, 0, 0.1);
+}
+
+/* VARIANT 1: Navy */
+.card-variant-1 {
+    background-color: #0D1A25;
+    color: #FFFFFF;
+}
+.card-variant-1 .information-card__title { color: #FFFFFF; }
+.card-variant-1 .information-card__desc { color: rgba(255, 255, 255, 0.75); }
+
+/* VARIANT 2: Very Light Grey */
+.card-variant-2 {
+    background-color: #F8F8F8;
+    color: #333333;
+}
+.card-variant-2 .information-card__title { color: #333333; }
+.card-variant-2 .information-card__desc { color: #555555; }
+
+/* VARIANT 3: White */
+.card-variant-3 {
+    background-color: #FFFFFF;
+    color: #333333;
+}
+.card-variant-3 .information-card__title { color: #333333; }
+.card-variant-3 .information-card__desc { color: #555555; }
+
+/* Icon Architecture */
+.information-card__icon {
+    width: 48px;
+    height: 48px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: center;
+}
+
+.information-card__icon img {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+/* INTERACTABLE MAP ENGINE */
+.information-map-wrapper {
+    width: 100%;
+    height: clamp(400px, 50vh, 600px);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+    z-index: 10;
+    box-shadow: 0 15px 50px rgba(0, 0, 0, 0.12);
+}
+
+.information-map-iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+    filter: grayscale(1) invert(0.92) contrast(1.1); /* Match the brand's dark blueprint aesthetic */
+}
+
+/* DECORATIVE WATERMARK */
+.information-watermark {
+    position: absolute;
+    right: -150px; /* Bleed off screen slightly */
+    top: 50%;
+    transform: translateY(-50%) rotate(15deg);
+    width: 800px;
+    max-width: 60vw;
+    opacity: 0.15; /* Extremely subtle ghostly presence */
+    z-index: 1;
+    pointer-events: none;
+}
+
+/* =========================================
+   RESPONSIVE LAYOUTS
+   ========================================= */
+@media (max-width: 1024px) {
+    .information-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .information-grid {
+        grid-template-columns: 1fr;
+    }
+}
