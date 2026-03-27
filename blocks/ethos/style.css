@@ -213,19 +213,36 @@
     }
 
     .ethos-watermark {
-        right: -20vw;
+        display: none; /* Removed flower background for mobile as requested */
+    }
+
+    .ethos-desc {
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .ethos-btn-wrapper {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .ethos-features {
         flex-direction: column;
         gap: 32px;
+        align-items: center; /* Center the feature column */
     }
 
     .ethos-feature-item {
         max-width: 400px;
         margin: 0 auto;
-        text-align: left;
-        /* Keep trust icon formatting strictly left */
+        text-align: center; /* Center all feature text elements */
+        flex-direction: column; /* Stack icon on top of text for better mobile centering */
+        align-items: center;
+    }
+
+    .ethos-feature-item__text {
+        text-align: center;
     }
 }
 
